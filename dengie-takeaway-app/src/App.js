@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { restaurants, menus } from "./data/cuisines";
+import Navbar from "./components/common/Navbar";
+import Menu from "./components/menu/Menu";
+import CuisineList from "./components/homePage/cuisineList";
+
+import { Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Switch>
+        <Route
+          path="/menu/:name"
+          render={(props) => (
+            <Menu menu={menus[props.match.params.name]} {...props} />
+          )}
+        />
+
+        <Route path="/">
+          <CuisineList cuisines={restaurants} />
+        </Route>
+      </Switch>
+    </>
   );
 }
 

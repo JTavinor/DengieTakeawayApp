@@ -1,0 +1,94 @@
+/* GENERAL MODAL */
+
+.addToBasketButton {
+  background-color: steelblue;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-size: large;
+  margin-top: 15px;
+  padding: 5px 20px;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.addToBasketButtonInfo {
+  padding: 10px;
+}
+
+.counter {
+  font-size: large;
+  margin: 0 10px;
+}
+
+.counterButton {
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  height: 35px;
+  font-size: large;
+  margin: 0 8px;
+  width: 35px;
+}
+
+.counterContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.menuModalContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.menuModalInfo {
+  margin-bottom: 0;
+}
+
+.minus {
+  background-color: tomato;
+}
+
+.plus {
+  background-color: yellowgreen;
+}
+
+/* MODAL WITH OPTIONS */
+
+.activeButton {
+  background-color: seagreen;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  font-size: large;
+  padding: 10px 0;
+  width: 200px;
+}
+
+.optionButton {
+  background-color: steelblue;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  font-size: large;
+  padding: 10px 0;
+  width: 200px;
+}
+
+.optionsList {
+  margin-bottom: 15px;
+}
+
+.optionsListItem {
+  margin-bottom: 5px;
+}

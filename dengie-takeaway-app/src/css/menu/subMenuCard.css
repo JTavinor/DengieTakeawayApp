@@ -1,0 +1,9 @@
+.subMenuCardContainer {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.subMenuCardHeader {
+  margin-bottom: 0;
+  color: steelblue;
+}

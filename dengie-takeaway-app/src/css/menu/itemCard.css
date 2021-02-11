@@ -1,0 +1,22 @@
+.itemCardContainer {
+  background-color: whitesmoke;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  width: 100%;
+}
+
+.itemCardElement {
+  margin-bottom: 0;
+}
+
+.itemCardWrapperButton {
+  background-color: whitesmoke;
+  border: 1px solid gray;
+  border-radius: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 100%;
+}

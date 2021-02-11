@@ -1,0 +1,20 @@
+.menuContainer {
+  display: flex;
+  flex-direction: row;
+}
+.menuBasketContainer {
+  width: 35%;
+}
+.menuCardContainer {
+  width: 50%;
+  margin: 0 50px;
+}
+
+.menuLocatorContainer {
+  width: 15%;
+}
+
+.menuPageContainer {
+  margin: auto;
+  width: 90%;
+}

@@ -1,0 +1,13 @@
+.restaurantContainer {
+  /* border: 1px solid green; */
+  width: 100%;
+  margin: auto;
+}
+
+.restaurantItem {
+  border-bottom: 1px solid gray;
+}
+
+[class~="restaurantItem"]:last-of-type {
+  border-bottom: none;
+}

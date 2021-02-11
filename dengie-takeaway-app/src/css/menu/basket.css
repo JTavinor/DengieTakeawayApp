@@ -1,0 +1,30 @@
+.basketHeader {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px;
+  margin: 0;
+}
+
+.basketList {
+  border-bottom: 1px solid lightgray;
+}
+
+.basketListItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.basketSubtotalContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.basketSubtotalElement {
+  margin-bottom: 0;
+}
+
+li.basketListItem:first-child {
+  padding-top: 10px;
+}
