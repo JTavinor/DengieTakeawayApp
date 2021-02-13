@@ -1,5 +1,5 @@
 import React from "react";
-import CuisineCard from "./cuisineCard";
+import CuisineCard from "./CuisineCard";
 import "../../css/cuisineList.css";
 
 function CuisineList({ cuisines }) {
