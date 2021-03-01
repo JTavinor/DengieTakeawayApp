@@ -34,19 +34,24 @@ function CuisineList() {
       )}
       {!loading && (
         <>
-          <div>
-            <label for="postcode" style={{ display: "block" }}>
-              Enter your postcode to see which restaurants deliver to you
-            </label>
-            <input
-              type="text"
-              name="postcode"
-              style={{ display: "block" }}
-              value={postcode}
-              onChange={(e) => setPostcode(e.target.value)}
-            />
+          <div className="cuisineContainer">
+            <div className="postcodeContainer">
+              <label
+                for="postcode"
+                style={{ display: "block", marginBottom: "10px" }}
+              >
+                Enter your postcode to see which restaurants deliver to you
+              </label>
+              <input
+                type="text"
+                name="postcode"
+                style={{ display: "block", width: "50%" }}
+                value={postcode}
+                onChange={(e) => setPostcode(e.target.value)}
+              />
+            </div>
+            {renderCuisines(cuisines)}
           </div>
-          <div className="cuisineContainer">{renderCuisines(cuisines)}</div>
         </>
       )}
     </>

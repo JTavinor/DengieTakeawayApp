@@ -9,7 +9,6 @@ function CuisineCard({ cuisine, postcode }) {
   const filteredRestaurants = cuisine.restaurants.filter((restaurant) => {
     // if (postcode.length === 0) return restaurant;
     for (let code of restaurant.postcodes) {
-      console.log("CODE", code);
       if (code.includes(postcode.toUpperCase())) return restaurant;
     }
     return restaurant.postcodes.includes(postcode.toUpperCase());

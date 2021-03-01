@@ -7,6 +7,7 @@ import { Route, Switch } from "react-router-dom";
 
 import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
+import Footer from "./components/common/Footer";
 
 const store = configureStore();
 
@@ -22,6 +23,7 @@ function App() {
             <CuisineList cuisines={restaurants} />
           </Route>
         </Switch>
+        <Footer />
       </Provider>
     </>
   );
