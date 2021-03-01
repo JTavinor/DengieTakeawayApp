@@ -16,12 +16,7 @@ function App() {
       <Provider store={store}>
         <Navbar />
         <Switch>
-          <Route
-            path="/menu/:name"
-            render={(props) => (
-              <Menu menu={menus[props.match.params.name]} {...props} />
-            )}
-          />
+          <Route path="/menu/:name" render={(props) => <Menu {...props} />} />
 
           <Route path="/">
             <CuisineList cuisines={restaurants} />

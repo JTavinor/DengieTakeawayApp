@@ -7,10 +7,8 @@ function RestaurantList({ restaurants }) {
     const list = restaurants.map((restaurant) => (
       <li className="restaurantItem">
         <RestaurantCard
-          name={restaurant.name}
-          openingTimes={restaurant.open}
-          start={restaurant.start}
-          close={restaurant.close}
+          restaurant={restaurant.restaurant}
+          openingHours={restaurant.openingHours}
         />
       </li>
     ));

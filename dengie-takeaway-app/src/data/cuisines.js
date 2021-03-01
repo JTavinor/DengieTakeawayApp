@@ -31,7 +31,7 @@ export const restaurants = [
 ];
 
 export const menus = {
-  pizzaIsland: [
+  restaurant1: [
     {
       category: "Wiener",
       description: "Lovely jubbly drinks",

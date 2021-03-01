@@ -1,6 +1,7 @@
 .container {
   width: 100%;
-  padding: 10px 0;
+  padding: 50px 30px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,12 +26,12 @@
 
 .name {
   /* border: 1px solid blue; */
-  padding-left: 5%;
+  /* padding-left: 5%; */
   /* font-size: xx-small; */
 }
 
 .times {
-  padding-right: 5%;
+  /* padding-right: 5%; */
   /* border: 1px solid green; */
 }
 

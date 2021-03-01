@@ -5,8 +5,8 @@ import _ from "lodash";
 
 import { Link } from "react-router-dom";
 
-function RestaurantCard({ name, openingTimes, start, close }) {
-  const [open, setOpen] = useState(true);
+function RestaurantCard({ restaurant, openingHours, menuId }) {
+  const [restaurantIsOpen, setRestaurantIsOpen] = useState(true);
 
   useEffect(() => {
     checkTime();
@@ -15,34 +15,55 @@ function RestaurantCard({ name, openingTimes, start, close }) {
   const checkTime = () => {
     const now = new Date();
     const hours = now.getHours();
-    if (hours < close && hours >= start) return setOpen(true);
-    return setOpen(false);
+    if (hours < openingHours[1] && hours >= openingHours[0])
+      return setRestaurantIsOpen(true);
+    return setRestaurantIsOpen(false);
+  };
+
+  const formatOpenTimes = () => {
+    let openHour = openingHours[0];
+    let openMinute = "00";
+    let closeHour = openingHours[1];
+    let closeMinute = "00";
+    if (Math.floor(openingHours[0]) !== openingHours[0])
+      openMinute = (openHour - Math.floor(openingHours[0])) * 60;
+    openHour = Math.floor(openingHours[0]);
+    if (Math.floor(openingHours[1]) !== openingHours[1])
+      closeMinute = (closeHour - Math.floor(openingHours[1])) * 60;
+    closeHour = Math.floor(openingHours[1]);
+
+    return `${openHour}:${openMinute} - ${closeHour}:${closeMinute}`;
   };
 
   return (
     <div>
-      <Link to={open ? `/menu/${_.camelCase(name.split(" ").join(""))}` : "/"}>
+      <Link
+        to={{
+          pathname: restaurantIsOpen
+            ? `/menu/${_.camelCase(restaurant.split(" ").join(""))}`
+            : "/",
+          state: {
+            menuId: "603cc37bb32bd2699e4d30f5",
+          },
+        }}
+      >
         <div
-          className={open ? "container" : "container closed"}
+          className={restaurantIsOpen ? "container" : "container closed"}
           style={{ position: "relative", height: "80px" }}
         >
-          {/* <div
-            className="info"
-            style={{ position: "absolute", top: 0, left: 0 }}
-          > */}
-          <h2 className="name">{name}</h2>
+          <h2 className="name">{restaurant}</h2>
           <div className="openInfo">
             <div>
-              {open ? (
+              {restaurantIsOpen ? (
                 <span style={{ color: "green" }}>Open</span>
               ) : (
                 <span style={{ color: "tomato" }}>Closed</span>
               )}
             </div>
-            <p className="times">Opening Times: {openingTimes}</p>
+            <p className="times">Opening Hours: {formatOpenTimes()}</p>
             {/* </div> */}
           </div>
-          {!open && (
+          {!restaurantIsOpen && (
             <div
               className="overlay"
               style={{
