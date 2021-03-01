@@ -42,6 +42,8 @@ export const loadCuisines = () => (dispatch, getState) => {
 
   if (diffInMinutes < 60) return;
 
+  console.log(url);
+
   return dispatch(
     apiCallBegan({
       url,

@@ -43,7 +43,7 @@ function RestaurantCard({ restaurant, openingHours, menuId }) {
             ? `/menu/${_.camelCase(restaurant.split(" ").join(""))}`
             : "/",
           state: {
-            menuId: "603cc37bb32bd2699e4d30f5",
+            menuId: menuId,
           },
         }}
       >

@@ -5,28 +5,19 @@ import Basket from "./Basket";
 import _ from "lodash";
 import "../../css/menu/menu.css";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { loadMenu } from "../../store/menus";
+import { Bars } from "react-loading-icons";
 
 function Menu({ location }) {
-  const getMenu = async () => {
-    const { data } = await axios.get(
-      `http://localhost:5000/api/menus/${location.state.menuId}`
-    );
+  const dispatch = useDispatch();
 
-    return data.menu;
-  };
+  const menu = useSelector((state) => state.entities.menu.list.menu);
+  const loading = useSelector((state) => state.entities.menu.loading);
 
-  const [menu, setMenu] = useState();
-
-  useEffect(async () => {
-    const x = await getMenu();
-    setMenu(x);
+  useEffect(() => {
+    dispatch(loadMenu(location.state.menuId));
   }, []);
-
-  console.log(menu);
-  // if (menu) {
-  //   console.log(menu);
-  // }
-  // console.log("XXX", getMenu().data.menu[0]);
 
   const [basket, setBasket] = useState({ subtotal: 0 });
 
@@ -56,7 +47,12 @@ function Menu({ location }) {
 
   return (
     <>
-      {menu && (
+      {loading && (
+        <div className="loadingIcon">
+          <Bars height="100px" />
+        </div>
+      )}
+      {!loading && menu && (
         <>
           <div>{menu.restaurant}</div>
           <div className="menuPageContainer">

@@ -9,6 +9,7 @@ function RestaurantList({ restaurants }) {
         <RestaurantCard
           restaurant={restaurant.restaurant}
           openingHours={restaurant.openingHours}
+          menuId={restaurant.menuId}
         />
       </li>
     ));
