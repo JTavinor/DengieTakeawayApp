@@ -16,3 +16,7 @@ code {
 html {
   scroll-behavior: smooth;
 }
+
+main {
+  min-height: calc(100vh - 140px - 60px - 20px);
+}

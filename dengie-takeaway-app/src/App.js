@@ -8,6 +8,7 @@ import { Route, Switch } from "react-router-dom";
 import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
 import Footer from "./components/common/Footer";
+import Checkout from "./components/Checkout.jsx";
 
 const store = configureStore();
 
@@ -16,13 +17,18 @@ function App() {
     <>
       <Provider store={store}>
         <Navbar />
-        <Switch>
-          <Route path="/menu/:name" render={(props) => <Menu {...props} />} />
+        <main>
+          <Switch>
+            <Route path="/checkout">
+              <Checkout />
+            </Route>
+            <Route path="/menu/:name" render={(props) => <Menu {...props} />} />
 
-          <Route path="/">
-            <CuisineList cuisines={restaurants} />
-          </Route>
-        </Switch>
+            <Route path="/">
+              <CuisineList cuisines={restaurants} />
+            </Route>
+          </Switch>
+        </main>
         <Footer />
       </Provider>
     </>

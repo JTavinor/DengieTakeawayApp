@@ -4,7 +4,6 @@ import MenuLocator from "./MenuLocator";
 import Basket from "./Basket";
 import _ from "lodash";
 import "../../css/menu/menu.css";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { loadMenu } from "../../store/menus";
 import { Bars } from "react-loading-icons";

@@ -1,12 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import "../../css/menu/menuModals.css";
+import { itemAdded } from "../../store/basket";
 
-function MenuModalOptions({
-  addItemToBasket,
-  itemDescription,
-  itemName,
-  itemOptions,
-}) {
+function MenuModalOptions({ itemDescription, itemName, itemOptions, onClose }) {
+  const dispatch = useDispatch();
+
   let [quantity, setQuantity] = useState(1);
   let [selectedOption, setSelectedOption] = useState("");
 
@@ -55,13 +54,16 @@ function MenuModalOptions({
       )}
       <button
         className="addToBasketButton"
-        onClick={() =>
-          addItemToBasket({
-            item: `${itemName}: ${selectedOption}`,
-            quantity: quantity,
-            price: quantity * itemOptions[selectedOption],
-          })
-        }
+        onClick={() => {
+          dispatch(
+            itemAdded({
+              itemName: `${itemName}: ${selectedOption}`,
+              quantity: quantity,
+              price: quantity * itemOptions[selectedOption],
+            })
+          );
+          onClose();
+        }}
       >
         <div className="addToBasketButtonInfo">Add to order</div>
         <div className="addToBasketButtonInfo">

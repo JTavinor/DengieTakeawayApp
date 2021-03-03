@@ -45,6 +45,7 @@ function ItemCard({
             itemDescription={itemDescription}
             itemPrice={itemPrice}
             itemName={itemName}
+            onClose={() => onCloseModal()}
           />
         )}
         {itemOptions && (
@@ -53,6 +54,7 @@ function ItemCard({
             itemDescription={itemDescription}
             itemOptions={itemOptions}
             itemName={itemName}
+            onClose={() => onCloseModal()}
           />
         )}
       </Modal>

@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import _ from "lodash";
+import { itemAdded } from "../../store/basket";
 
 import "../../css/menu/menuModals.css";
+import { useDispatch } from "react-redux";
 
-function MenuModal({ addItemToBasket, itemDescription, itemName, itemPrice }) {
+function MenuModal({ itemDescription, itemName, itemPrice, onClose }) {
   let [quantity, setQuantity] = useState(1);
+
+  const dispatch = useDispatch();
 
   return (
     <div className="menuModalContainer">
@@ -29,13 +33,16 @@ function MenuModal({ addItemToBasket, itemDescription, itemName, itemPrice }) {
       </div>
       <button
         className="addToBasketButton"
-        onClick={() =>
-          addItemToBasket({
-            item: itemName,
-            quantity,
-            price: _.round(quantity * itemPrice, 2),
-          })
-        }
+        onClick={() => {
+          dispatch(
+            itemAdded({
+              itemName: itemName,
+              quantity: quantity,
+              price: quantity * itemPrice,
+            })
+          );
+          onClose();
+        }}
       >
         <div className="addToBasketButtonInfo">Add to order</div>
         <div className="addToBasketButtonInfo">£{itemPrice * quantity}</div>
