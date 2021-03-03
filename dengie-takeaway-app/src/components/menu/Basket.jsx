@@ -107,8 +107,31 @@ function Basket() {
     return <ul className="basketList">{basketList}</ul>;
   };
 
+  const [delivery, setDelivery] = useState("delivery");
+
   return (
     <div style={basketContainer}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+        onChange={(e) => setDelivery(e.target.value)}
+      >
+        <br />
+        <input
+          type="radio"
+          id="delivery"
+          name="gender"
+          value="delivery"
+          defaultChecked
+        />
+        <label for="delivery">Delivery</label>
+        <input type="radio" id="collection" name="gender" value="collection" />
+        <label for="collection">Collection</label>
+        <br />
+      </div>
       <h2 className="basketHeader">Your Order</h2>
       <div>
         {basketIsNotEmpty() && renderBasket()}
@@ -116,7 +139,7 @@ function Basket() {
           <p className="basketSubtotalElement">Subtotal</p>
           <p className="basketSubtotalElement">£{getSubtotal(basket)}</p>
         </div>
-        <Link to="/checkout">
+        <Link to={delivery === "delivery" ? "/checkout" : "/order-details"}>
           <button
             className="addToBasketButton"
             style={{

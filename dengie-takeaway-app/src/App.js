@@ -9,6 +9,7 @@ import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
 import Footer from "./components/common/Footer";
 import Checkout from "./components/Checkout.jsx";
+import OrderDetails from "./components/OrderDetails";
 
 const store = configureStore();
 
@@ -19,6 +20,9 @@ function App() {
         <Navbar />
         <main>
           <Switch>
+            <Route path="/order-details">
+              <OrderDetails />
+            </Route>
             <Route path="/checkout">
               <Checkout />
             </Route>
