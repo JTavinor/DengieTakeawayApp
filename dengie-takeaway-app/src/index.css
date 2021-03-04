@@ -20,3 +20,13 @@ html {
 main {
   min-height: calc(100vh - 140px - 60px - 20px);
 }
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}

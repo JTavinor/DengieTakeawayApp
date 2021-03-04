@@ -1,60 +1,71 @@
 import React, { useEffect, useState } from "react";
-import CuisineCard from "./CuisineCard";
-import "../../css/cuisineList.css";
-import { loadCuisines } from "../../store/cuisines";
 import { useDispatch, useSelector } from "react-redux";
 import { Bars } from "react-loading-icons";
+
+import CuisineCard from "./CuisineCard";
+import PostcodeChecker from "./PostcodeChecker";
+
+import { loadCuisines } from "../../store/cuisines";
+
+import "../../css/cuisineList.css";
+
+const filteredCuisines = (postcode, cuisines) => {
+  let filteredCuisines = [];
+  for (const cuisine of cuisines) {
+    const filteredCuisine = { ...cuisine };
+    const filteredRestaurants = filteredCuisine.restaurants.filter(
+      (restaurant) => {
+        for (let deliversTo of restaurant.postcodes) {
+          if (deliversTo.includes(postcode.slice(0, 3).toUpperCase()))
+            return restaurant;
+        }
+        return null;
+      }
+    );
+    filteredCuisine.restaurants = filteredRestaurants;
+    filteredCuisines.push(filteredCuisine);
+  }
+
+  return filteredCuisines;
+};
+
+const renderCuisines = (cuisines) => {
+  const cuisineList = cuisines.map((cuisine) => (
+    <li className="cuisineItem" key={cuisine.cuisine}>
+      <CuisineCard cuisine={cuisine} />
+    </li>
+  ));
+  return <ul>{cuisineList}</ul>;
+};
 
 function CuisineList() {
   const [postcode, setPostcode] = useState("");
 
   const dispatch = useDispatch();
   const cuisines = useSelector((state) => state.entities.cuisines.list);
+  const filteredCuisinesy = filteredCuisines(postcode, cuisines);
   const loading = useSelector((state) => state.entities.cuisines.loading);
 
   useEffect(() => {
     dispatch(loadCuisines());
   }, []);
 
-  const renderCuisines = (cuisines) => {
-    const list = cuisines.map((cuisine) => (
-      <li className="cuisineItem">
-        <CuisineCard cuisine={cuisine} postcode={postcode} />
-      </li>
-    ));
-    return <ul className="cuisineList">{list}</ul>;
-  };
-
   return (
-    <>
+    <React.Fragment>
       {loading && (
         <div className="loadingIcon">
           <Bars height="100px" />
         </div>
       )}
       {!loading && (
-        <>
+        <React.Fragment>
           <div className="cuisineContainer">
-            <div className="postcodeContainer">
-              <label
-                for="postcode"
-                style={{ display: "block", marginBottom: "10px" }}
-              >
-                Enter your postcode to see which restaurants deliver to you
-              </label>
-              <input
-                type="text"
-                name="postcode"
-                style={{ display: "block", width: "50%" }}
-                value={postcode}
-                onChange={(e) => setPostcode(e.target.value)}
-              />
-            </div>
-            {renderCuisines(cuisines)}
+            <PostcodeChecker setPostcode={setPostcode} postcode={postcode} />
+            {renderCuisines(filteredCuisinesy)}
           </div>
-        </>
+        </React.Fragment>
       )}
-    </>
+    </React.Fragment>
   );
 }
 

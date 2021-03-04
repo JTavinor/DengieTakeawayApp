@@ -1,37 +1,39 @@
 import React from "react";
-import "../../css/form.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
-function Input({
+import "../../css/formField.css";
+
+function FormField({
+  autoFocus,
   className,
-  errorChecker,
+  fieldError,
   errorMessage,
   label,
   name,
   onChange,
+  placeholder,
   required,
   value,
 }) {
   return (
-    <div style={{ width: "80%" }}>
-      <label htmlFor={name} className="formElement">
+    <div className="formField">
+      <label className="formLabel" htmlFor={name}>
         {label}
-        {required && <span style={{ color: "#ff4c4c" }}> *</span>}
+        {required && <span className="fieldRequired"> *</span>}
       </label>
-      <br />
       <input
+        autoFocus={autoFocus}
         className={className}
-        onChange={onChange}
-        value={value}
-        autoFocus
-        type="text"
         id={name}
         name={name}
-        placeholder="Address 1"
+        onChange={onChange}
+        placeholder={placeholder || label}
+        type="text"
+        value={value}
       />
-      {errorChecker ? (
-        <div className="error">
+      {fieldError ? (
+        <div className="formFieldError">
           <FontAwesomeIcon icon={faExclamationCircle} />
           {"   "}
           {errorMessage}
@@ -41,4 +43,4 @@ function Input({
   );
 }
 
-export default Input;
+export default FormField;

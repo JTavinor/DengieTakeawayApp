@@ -6,6 +6,7 @@ import {
   itemQuantityUpdated,
   itemRemoved,
 } from "../../store/basket";
+import { deliveryToggled, basketAdded } from "../../store/order";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -31,6 +32,8 @@ function Basket() {
 
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.entities.basket);
+  const order = useSelector((state) => state.entities.order);
+  console.log(order);
   // console.log(basket);
 
   const basketIsNotEmpty = () => {
@@ -147,6 +150,10 @@ function Basket() {
               textAlign: "center",
               padding: "10px",
               justifyContent: "center",
+            }}
+            onClick={() => {
+              dispatch(deliveryToggled({ delivery: delivery }));
+              dispatch(basketAdded({ basket: basket }));
             }}
           >
             <p style={{ margin: 0 }}>Go to Checkout</p>

@@ -4,10 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import "../css/form.css";
 import * as Yup from "yup";
-import Input from "./common/Input";
+import Input from "./common/FormField";
 import { Link } from "react-router-dom";
+import { customerDetailsAdded } from "../store/order";
+import { useDispatch, useSelector } from "react-redux";
+import FormField from "./common/FormField";
 
 function Checkout(props) {
+  const dispatch = useDispatch();
+
+  const order = useSelector((state) => state.entities.order);
+
   const formik = useFormik({
     initialValues: {
       address1: "",
@@ -20,7 +27,6 @@ function Checkout(props) {
       address1: Yup.string()
         .max(20, "Must be 15 characters or less")
         .required("Address 1 is required"),
-
       town: Yup.string()
         .max(20, "Must be 15 characters or less")
         .required("Town/City is required"),
@@ -33,17 +39,20 @@ function Checkout(props) {
     }),
 
     onSubmit: (values) => {
-      console.log(values);
-      window.location = "/order-details";
+      console.log("x");
+      dispatch(customerDetailsAdded({ values }));
     },
   });
+
+  console.log(formik.errors.town);
 
   return (
     <div className="cuisineContainer">
       <form onSubmit={formik.handleSubmit} className="form">
-        <Input
+        <FormField
+          autoFocus
           className={formik.errors.address1 ? "inputError" : "input"}
-          errorChecker={formik.errors.address1}
+          fieldError={formik.errors.address1}
           errorMessage={formik.errors.address1}
           label="Address 1"
           name="address1"
@@ -52,9 +61,9 @@ function Checkout(props) {
           required
           value={formik.values.address1}
         />
-        <Input
+        <FormField
           className={formik.errors.address2 ? "inputError" : "input"}
-          errorChecker={formik.touched.address2 && formik.errors.address2}
+          fieldError={formik.errors.address2}
           errorMessage={formik.errors.address2}
           label="Address 2"
           name="address2"
@@ -62,9 +71,9 @@ function Checkout(props) {
           onChange={formik.handleChange}
           value={formik.values.address2}
         />
-        <Input
+        <FormField
           className={formik.errors.town ? "inputError" : "input"}
-          errorChecker={formik.touched.town && formik.errors.town}
+          fieldError={formik.errors.town}
           errorMessage={formik.errors.town}
           label="Town/City"
           name="town"
@@ -73,9 +82,9 @@ function Checkout(props) {
           required
           value={formik.values.town}
         />
-        <Input
+        <FormField
           className={formik.errors.postcode ? "inputError" : "input"}
-          errorChecker={formik.touched.postcode && formik.errors.postcode}
+          fieldError={formik.errors.postcode}
           errorMessage={formik.errors.postcode}
           label="Postcode"
           name="postcode"
@@ -84,9 +93,9 @@ function Checkout(props) {
           required
           value={formik.values.postcode}
         />
-        <Input
+        <FormField
           className={formik.errors.phone ? "inputError" : "input"}
-          errorChecker={formik.touched.phone && formik.errors.phone}
+          fieldError={formik.errors.phone}
           errorMessage={formik.errors.phone}
           label="Phone Number"
           name="phone"
@@ -95,19 +104,25 @@ function Checkout(props) {
           required
           value={formik.values.phone}
         />
-        <button
-          type="submit"
-          className="addToBasketButton"
-          style={{
-            width: "80%",
-            textAlign: "center",
-            padding: "10px",
-            justifyContent: "center",
-            marginTop: "15px",
-          }}
-        >
-          Send
-        </button>
+        <Link to="/order-details">
+          <button
+            disabled={!(formik.isValid && formik.dirty)}
+            type="submit"
+            className="addToBasketButton"
+            style={{
+              width: "80%",
+              textAlign: "center",
+              padding: "10px",
+              justifyContent: "center",
+              marginTop: "15px",
+            }}
+            onClick={() =>
+              dispatch(customerDetailsAdded({ customerDetails: formik.values }))
+            }
+          >
+            Send
+          </button>
+        </Link>
       </form>
     </div>
   );

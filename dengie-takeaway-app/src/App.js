@@ -1,5 +1,5 @@
 import "./App.css";
-import { restaurants, menus } from "./data/cuisines";
+import { restaurants } from "./data/cuisines";
 import Navbar from "./components/common/Navbar";
 import Menu from "./components/menu/Menu";
 import CuisineList from "./components/homePage/CuisineList";

@@ -1,38 +1,31 @@
-.CuisineCard {
-  width: 100%;
+.cuisineBanner {
   height: 160px;
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.title {
-  font-size: xxx-large;
-  font-weight: 700;
-  margin-left: 5%;
-  margin-top: 5%;
-}
-.chevron {
-  margin-right: 5%;
-  margin-top: 5%;
-}
-
-.bg {
-  width: 60%;
-  height: 160px;
-  position: absolute;
   opacity: 50%;
+  position: absolute;
+  width: 100%;
+}
+
+.cBImage {
   background-size: cover;
   z-index: -10;
 }
 
-.tint {
-  width: 60%;
-  height: 160px;
-  position: absolute;
+.cBTint {
   background-color: black;
-  opacity: 50%;
   z-index: -5;
+}
+
+.cuisineCard {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 160px;
+  position: relative;
+}
+
+.title {
+  color: whitesmoke;
+  font-size: xxx-large;
+  margin-left: 5%;
+  margin-top: 5%;
 }

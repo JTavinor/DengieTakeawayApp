@@ -1,36 +1,34 @@
 import React from "react";
-import "../../css/cuisineCard.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import colors from "../../config/colors";
+
 import RestaurantList from "./restaurantList";
 
-function CuisineCard({ cuisine, postcode }) {
-  const filteredRestaurants = cuisine.restaurants.filter((restaurant) => {
-    // if (postcode.length === 0) return restaurant;
-    for (let code of restaurant.postcodes) {
-      if (code.includes(postcode.toUpperCase())) return restaurant;
-    }
-    return restaurant.postcodes.includes(postcode.toUpperCase());
-  });
+import "../../css/cuisineCard.css";
 
+// Filters restaurants to those that deliver to the given postcode
+// const filteredRestaurants = (cuisine, postcode) =>
+//   cuisine.restaurants.filter((restaurant) => {
+//     for (let deliversTo of restaurant.postcodes) {
+//       if (deliversTo.includes(postcode.slice(0, 3).toUpperCase()))
+//         return restaurant;
+//     }
+//     return null;
+//   });
+
+function CuisineCard({ cuisine }) {
   return (
-    <div classname="cont">
-      <div className="CuisineCard" style={{ color: colors.white }}>
+    <React.Fragment>
+      <div className="cuisineCard">
         <h1 className="title">{cuisine.cuisine}</h1>
-        {/* <div className="chevron">
-          <FontAwesomeIcon icon={faChevronDown} size="5x" />
-        </div> */}
         <div
-          className="bg"
+          className="cuisineBanner cBImage"
           style={{
             backgroundImage: `url(http://localhost:5000/${cuisine.bannerImage})`,
           }}
         />
-        <div className="tint" />
+        <div className="cuisineBanner cBTint" />
       </div>
-      <RestaurantList restaurants={filteredRestaurants} />
-    </div>
+      <RestaurantList restaurants={cuisine.restaurants} />
+    </React.Fragment>
   );
 }
 
