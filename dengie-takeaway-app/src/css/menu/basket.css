@@ -1,11 +1,18 @@
-.basketHeader {
-  border-bottom: 1px solid lightgray;
-  padding-bottom: 10px;
-  margin: 0;
+.basketContainer {
+  background-color: var(--white-color);
+  border: 1px solid gray;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 15px 30px;
+  text-align: center;
+  width: 75%;
 }
 
-.basketList {
-  border-bottom: 1px solid lightgray;
+.basketHeader {
+  padding-bottom: 10px;
+  margin: 0;
 }
 
 .basketListItem {
@@ -15,13 +22,17 @@
   margin-bottom: 15px;
 }
 
-.basketSubtotalContainer {
+[class~="basketListItem"]:first-of-type {
+  margin-top: 15px;
+}
+
+.subtotalContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.basketSubtotalElement {
+.subtotalElement {
   margin-bottom: 0;
 }
 
@@ -29,14 +40,9 @@ li.basketListItem:first-child {
   padding-top: 10px;
 }
 
-.basketContainer {
-  background-color: whitesmoke;
-  border: 1px solid gray;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  padding: 15px 30px;
+.checkoutBtn {
+  width: 100%;
   text-align: center;
-  width: 75%;
+  padding: 10px;
+  justify-content: center;
 }

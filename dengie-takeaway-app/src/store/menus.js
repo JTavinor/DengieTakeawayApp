@@ -1,7 +1,6 @@
 // DUMMY SLICE FOR CUISINES
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
-import moment from "moment";
 
 const slice = createSlice({
   name: "menu",
@@ -14,19 +13,16 @@ const slice = createSlice({
   reducers: {
     menuRequested: (menu, action) => {
       menu.loading = true;
-      console.log("REQUESTED", menu.loading);
     },
 
     menuRequestFailed: (menu, action) => {
       menu.loading = false;
-      console.log("REQUEST FAILED", menu.loading);
     },
 
     menuReceived: (menu, action) => {
       menu.list = action.payload;
       menu.loading = false;
       menu.lastFetch = Date.now();
-      console.log("RECEIVED", menu.loading);
     },
   },
 });

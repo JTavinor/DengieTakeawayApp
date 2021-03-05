@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import _ from "lodash";
 
 import { checkRestaurantOpen, formatOpenTimes } from "../../helpers/homePage";
 
@@ -21,6 +20,7 @@ function RestaurantCard({ restaurant, openingHours, menuId }) {
           : "/",
         state: {
           menuId: menuId,
+          restaurant: restaurant,
         },
       }}
     >

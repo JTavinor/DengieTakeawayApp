@@ -20,7 +20,7 @@ function Hompage() {
 
   useEffect(() => {
     dispatch(loadCuisines());
-  }, []);
+  }, [dispatch]);
 
   return (
     <React.Fragment>

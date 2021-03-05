@@ -1,8 +1,6 @@
 import "./App.css";
-import { restaurants } from "./data/cuisines";
 import Navbar from "./components/common/navbar";
 import Menu from "./components/menu/Menu";
-import CuisineList from "./components/homePage/cuisineList";
 import { Route, Switch } from "react-router-dom";
 
 import configureStore from "./store/configureStore";

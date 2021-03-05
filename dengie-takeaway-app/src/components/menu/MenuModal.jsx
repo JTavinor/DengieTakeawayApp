@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import _ from "lodash";
-import { itemAdded } from "../../store/basket";
-
-import "../../css/menu/menuModals.css";
 import { useDispatch } from "react-redux";
 
-function MenuModal({ itemDescription, itemName, itemPrice, onClose }) {
+import { itemAdded } from "../../store/order";
+
+import "../../css/menu/menuModals.css";
+
+function MenuModal({ item, onClose }) {
+  const { itemDescription, itemName, itemPrice } = item;
   let [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();

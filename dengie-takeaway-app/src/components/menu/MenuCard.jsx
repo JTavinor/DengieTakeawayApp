@@ -1,17 +1,16 @@
 import React from "react";
 import SubmenuCard from "./SubmenuCard";
 
-function MenuCard({ addItemToBasket, menu }) {
-  const renderMenu = (menu) => {
-    const list = menu.map((subMenu) => (
-      <li key={subMenu.category}>
-        <SubmenuCard addItemToBasket={addItemToBasket} subMenu={subMenu} />
-      </li>
-    ));
-    return <ul>{list}</ul>;
-  };
-
-  return renderMenu(menu);
+function MenuCard({ menu }) {
+  return (
+    <ul>
+      {menu.map((subMenu) => (
+        <li key={subMenu.category}>
+          <SubmenuCard subMenu={subMenu} />
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default MenuCard;

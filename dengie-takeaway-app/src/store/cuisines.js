@@ -1,4 +1,4 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
 import moment from "moment";
 
@@ -43,8 +43,6 @@ export const loadCuisines = () => (dispatch, getState) => {
   const diffInMinutes = moment().diff(moment(lastFetch), "minutes");
 
   if (diffInMinutes < 60) return;
-
-  console.log(url);
 
   return dispatch(
     apiCallBegan({

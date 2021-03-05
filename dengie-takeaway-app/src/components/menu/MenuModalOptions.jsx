@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "../../css/menu/menuModals.css";
-import { itemAdded } from "../../store/basket";
+import { itemAdded } from "../../store/order";
 
-function MenuModalOptions({ itemDescription, itemName, itemOptions, onClose }) {
+function MenuModalOptions({ item, onClose }) {
+  const { itemDescription, itemName, itemOptions } = item;
   const dispatch = useDispatch();
 
   let [quantity, setQuantity] = useState(1);

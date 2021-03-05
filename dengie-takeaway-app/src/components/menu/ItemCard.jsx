@@ -2,19 +2,14 @@ import React, { useState } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
-import "../../css/menu/itemCard.css";
-
 import MenuModal from "./MenuModal";
 import MenuModalOptions from "./MenuModalOptions";
 
-function ItemCard({
-  addItemToBasket,
-  itemDescription,
-  itemName,
-  itemOptions,
-  itemPrice,
-}) {
+import "../../css/menu/itemCard.css";
+
+function ItemCard({ item }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { itemDescription, itemName, itemOptions, itemPrice } = item;
 
   return (
     <>
@@ -34,22 +29,10 @@ function ItemCard({
 
       <Modal open={modalIsOpen} onClose={() => setModalIsOpen(false)} center>
         {!itemOptions && (
-          <MenuModal
-            addItemToBasket={addItemToBasket}
-            itemDescription={itemDescription}
-            itemPrice={itemPrice}
-            itemName={itemName}
-            onClose={() => setModalIsOpen(false)}
-          />
+          <MenuModal item={item} onClose={() => setModalIsOpen(false)} />
         )}
         {itemOptions && (
-          <MenuModalOptions
-            addItemToBasket={addItemToBasket}
-            itemDescription={itemDescription}
-            itemOptions={itemOptions}
-            itemName={itemName}
-            onClose={() => setModalIsOpen(false)}
-          />
+          <MenuModalOptions item={item} onClose={() => setModalIsOpen(false)} />
         )}
       </Modal>
     </>
