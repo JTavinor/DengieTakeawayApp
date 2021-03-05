@@ -24,7 +24,7 @@
 }
 
 .title {
-  color: whitesmoke;
+  color: var(--white-color);
   font-size: xxx-large;
   margin-left: 5%;
   margin-top: 5%;

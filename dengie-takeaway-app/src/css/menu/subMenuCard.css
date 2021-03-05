@@ -5,5 +5,5 @@
 
 .subMenuCardHeader {
   margin-bottom: 0;
-  color: steelblue;
+  color: var(--blue-color);
 }

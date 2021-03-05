@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import "../css/form.css";
 import * as Yup from "yup";
-import Input from "./common/FormField";
+import Input from "./common/formField";
 import { Link } from "react-router-dom";
 import { customerDetailsAdded } from "../store/order";
 import { useDispatch, useSelector } from "react-redux";
-import FormField from "./common/FormField";
+import FormField from "./common/formField";
 
 function Checkout(props) {
   const dispatch = useDispatch();

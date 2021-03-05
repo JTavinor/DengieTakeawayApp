@@ -7,6 +7,7 @@ import "../../css/menu/menu.css";
 import { useDispatch, useSelector } from "react-redux";
 import { loadMenu } from "../../store/menus";
 import { Bars } from "react-loading-icons";
+import LoadingIcon from "../common/loadingIcon";
 
 function Menu({ location }) {
   const dispatch = useDispatch();
@@ -46,11 +47,7 @@ function Menu({ location }) {
 
   return (
     <>
-      {loading && (
-        <div className="loadingIcon">
-          <Bars height="100px" />
-        </div>
-      )}
+      {loading && <LoadingIcon />}
       {!loading && menu && (
         <>
           <div>{menu.restaurant}</div>

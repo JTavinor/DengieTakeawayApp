@@ -16,17 +16,11 @@ function ItemCard({
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const onOpenModal = () => setModalIsOpen(true);
-
-  const onCloseModal = () => {
-    setModalIsOpen(false);
-  };
-
   return (
     <>
       <button
         className="itemCardWrapperButton"
-        onClick={onOpenModal}
+        onClick={() => setModalIsOpen(true)}
         onMouseDown={(e) => e.preventDefault()}
       >
         <div className="itemCardContainer">
@@ -38,14 +32,14 @@ function ItemCard({
         </div>
       </button>
 
-      <Modal open={modalIsOpen} onClose={onCloseModal} center>
+      <Modal open={modalIsOpen} onClose={() => setModalIsOpen(false)} center>
         {!itemOptions && (
           <MenuModal
             addItemToBasket={addItemToBasket}
             itemDescription={itemDescription}
             itemPrice={itemPrice}
             itemName={itemName}
-            onClose={() => onCloseModal()}
+            onClose={() => setModalIsOpen(false)}
           />
         )}
         {itemOptions && (
@@ -54,7 +48,7 @@ function ItemCard({
             itemDescription={itemDescription}
             itemOptions={itemOptions}
             itemName={itemName}
-            onClose={() => onCloseModal()}
+            onClose={() => setModalIsOpen(false)}
           />
         )}
       </Modal>

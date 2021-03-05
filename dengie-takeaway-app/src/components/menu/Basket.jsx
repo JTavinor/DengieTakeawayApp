@@ -1,45 +1,26 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import "../../css/menu/basket.css";
-import {
-  getSubtotal,
-  itemQuantityUpdated,
-  itemRemoved,
-} from "../../store/basket";
-import { deliveryToggled, basketAdded } from "../../store/order";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+
+import { itemQuantityUpdated, itemRemoved } from "../../store/basket";
+import { basketAdded, deliveryToggled } from "../../store/order";
+
+import "../../css/menu/basket.css";
 
 const basketContainer = {
-  backgroundColor: "whitesmoke",
-  border: "1px solid gray",
-  borderRadius: "5px",
-  display: "flex",
-  flexDirection: "column",
-  margin: "auto",
-  padding: "15px 30px",
   position: "sticky",
-  textAlign: "center",
   top: 15,
-  width: "75%",
 };
 
 function Basket() {
-  // Removing subtotal from basket
-  // const itemBasket = { ...basket };
-  // delete itemBasket.subtotal;
-
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.entities.basket);
   const order = useSelector((state) => state.entities.order);
-  console.log(order);
-  // console.log(basket);
+  const delivery = useSelector((state) => state.entities.order.delivery);
 
-  const basketIsNotEmpty = () => {
-    return JSON.stringify(basket) !== "{}";
-  };
-
+  // Get from order slice
   const getSubtotal = (basket) => {
     let subTotal = 0;
     if (basket.length === 0) return subTotal;
@@ -49,6 +30,7 @@ function Basket() {
     return subTotal;
   };
 
+  // Absract to orderSlice action
   const decrementItem = (item) => {
     if (basket[item].quantity > 1) {
       return dispatch(
@@ -63,6 +45,7 @@ function Basket() {
     }
   };
 
+  // Absract to orderSlice action
   const incrementItem = (item) => {
     dispatch(
       itemQuantityUpdated({
@@ -110,17 +93,17 @@ function Basket() {
     return <ul className="basketList">{basketList}</ul>;
   };
 
-  const [delivery, setDelivery] = useState("delivery");
-
   return (
-    <div style={basketContainer}>
+    <div style={basketContainer} className="basketContainer">
       <div
         style={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
         }}
-        onChange={(e) => setDelivery(e.target.value)}
+        onChange={(e) =>
+          dispatch(deliveryToggled({ delivery: e.target.value }))
+        }
       >
         <br />
         <input
@@ -137,7 +120,7 @@ function Basket() {
       </div>
       <h2 className="basketHeader">Your Order</h2>
       <div>
-        {basketIsNotEmpty() && renderBasket()}
+        {renderBasket()}
         <div className="basketSubtotalContainer">
           <p className="basketSubtotalElement">Subtotal</p>
           <p className="basketSubtotalElement">£{getSubtotal(basket)}</p>
@@ -152,7 +135,6 @@ function Basket() {
               justifyContent: "center",
             }}
             onClick={() => {
-              dispatch(deliveryToggled({ delivery: delivery }));
               dispatch(basketAdded({ basket: basket }));
             }}
           >

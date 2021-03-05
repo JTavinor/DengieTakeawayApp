@@ -1,7 +1,7 @@
 /* GENERAL MODAL */
 
 .addToBasketButton {
-  background-color: steelblue;
+  background-color: var(--blue-color);
   border: none;
   border-radius: 3px;
   color: white;
@@ -54,11 +54,11 @@
 }
 
 .minus {
-  background-color: tomato;
+  background-color: var(--red-color);
 }
 
 .plus {
-  background-color: yellowgreen;
+  background-color: var(--green-color);
 }
 
 .smallButton {
@@ -73,7 +73,7 @@
 /* MODAL WITH OPTIONS */
 
 .activeButton {
-  background-color: seagreen;
+  background-color: var(--green-color);
   border: none;
   border-radius: 3px;
   color: white;
@@ -84,7 +84,7 @@
 }
 
 .optionButton {
-  background-color: steelblue;
+  background-color: var(--blue-color);
   border: none;
   border-radius: 3px;
   color: white;

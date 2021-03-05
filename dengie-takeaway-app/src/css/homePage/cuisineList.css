@@ -16,7 +16,7 @@
 
 .postcodeContainer {
   align-items: center;
-  background-color: whitesmoke;
+  background-color: var(--white-color);
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;

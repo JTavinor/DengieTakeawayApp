@@ -28,3 +28,15 @@
 li.basketListItem:first-child {
   padding-top: 10px;
 }
+
+.basketContainer {
+  background-color: whitesmoke;
+  border: 1px solid gray;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 15px 30px;
+  text-align: center;
+  width: 75%;
+}

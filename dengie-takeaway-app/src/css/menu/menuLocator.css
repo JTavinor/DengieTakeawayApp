@@ -1,9 +1,9 @@
 .categoryList li.active {
-  background-color: steelblue;
+  background-color: var(--blue-color);
 }
 
 .categoryList li:hover {
-  background-color: steelblue;
+  background-color: var(--blue-color);
   cursor: pointer;
 }
 

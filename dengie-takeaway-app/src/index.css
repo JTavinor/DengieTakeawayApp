@@ -30,3 +30,11 @@ a:visited {
   text-decoration: none;
   color: black;
 }
+
+:root {
+  --white-color: whitesmoke;
+  --gray-color: gray;
+  --red-color: #ff4c4c;
+  --green-color: green;
+  --blue-color: steelblue;
+}

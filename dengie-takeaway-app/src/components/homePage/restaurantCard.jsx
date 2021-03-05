@@ -2,30 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import _ from "lodash";
 
-import "../../css/restaurantCard.css";
+import { checkRestaurantOpen, formatOpenTimes } from "../../helpers/homePage";
 
-const checkRestaurantOpen = (openingHours, setRestaurantIsOpen) => {
-  const now = new Date();
-  const hours = now.getHours();
-  hours < openingHours[1] && hours >= openingHours[0]
-    ? setRestaurantIsOpen(true)
-    : setRestaurantIsOpen(false);
-};
-
-const formatOpenTimes = (openingHours) => {
-  let openHour = openingHours[0];
-  let openMinute = "00";
-  let closeHour = openingHours[1];
-  let closeMinute = "00";
-  if (Math.floor(openingHours[0]) !== openingHours[0])
-    openMinute = (openHour - Math.floor(openingHours[0])) * 60;
-  openHour = Math.floor(openingHours[0]);
-  if (Math.floor(openingHours[1]) !== openingHours[1])
-    closeMinute = (closeHour - Math.floor(openingHours[1])) * 60;
-  closeHour = Math.floor(openingHours[1]);
-
-  return `${openHour}:${openMinute} - ${closeHour}:${closeMinute}`;
-};
+import "../../css/homePage/restaurantCard.css";
 
 function RestaurantCard({ restaurant, openingHours, menuId }) {
   const [restaurantIsOpen, setRestaurantIsOpen] = useState(true);
@@ -38,7 +17,7 @@ function RestaurantCard({ restaurant, openingHours, menuId }) {
     <Link
       to={{
         pathname: restaurantIsOpen
-          ? `/menu/${_.camelCase(restaurant.split(" ").join(""))}`
+          ? `/menu/${restaurant.toLowerCase().split(" ").join("-")}`
           : "/",
         state: {
           menuId: menuId,

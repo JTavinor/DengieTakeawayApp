@@ -2,7 +2,7 @@
 
 .navbar {
   font-family: "Yellowtail", cursive;
-  color: tomato;
+  color: var(--red-color);
   width: 100%;
   height: 80px;
   background-color: white;
@@ -15,9 +15,9 @@
 }
 
 .logoLink:link {
-  color: tomato;
+  color: var(--red-color);
 }
 
 .logoLink:visited {
-  color: tomato;
+  color: var(--red-color);
 }

@@ -1,11 +1,11 @@
 .closed {
-  color: tomato;
+  color: var(--red-color);
 }
 
 .restaurantCard {
   align-items: center;
   box-sizing: border-box;
-  background-color: whitesmoke;
+  background-color: white;
   display: flex;
   font-weight: 300;
   height: 60px;
@@ -26,11 +26,11 @@
 }
 
 .open {
-  color: green;
+  color: var(--green-color);
 }
 
 .overlay {
-  background-color: tomato;
+  background-color: var(--red-color);
   height: 100%;
   left: 0;
   opacity: 0.2;

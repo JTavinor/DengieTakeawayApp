@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FormField from "../common/FormField";
+import FormField from "../common/formField";
 
 function isValidPostcode(postcode) {
   var postcodeRegEx = /^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i;

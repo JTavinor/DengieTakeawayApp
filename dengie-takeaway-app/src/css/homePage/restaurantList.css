@@ -1,5 +1,5 @@
 .restaurantItem {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid var(--gray-color);
 }
 
 [class~="restaurantItem"]:last-of-type {

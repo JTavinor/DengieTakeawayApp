@@ -6,15 +6,17 @@ const slice = createSlice({
   name: "cuisines",
   initialState: {
     list: [], // the data
-    loading: false, // For conditionally using a loading indicator
+    loading: true, // For conditionally using a loading indicator
     lastFetch: null, // for caching
+    error: null,
   },
   reducers: {
     cuisinesRequested: (cuisines) => {
       cuisines.loading = true;
     },
 
-    cuisinesRequestFailed: (cuisines) => {
+    cuisinesRequestFailed: (cuisines, action) => {
+      cuisines.error = action.payload;
       cuisines.loading = false;
     },
 
@@ -52,4 +54,24 @@ export const loadCuisines = () => (dispatch, getState) => {
       onError: cuisinesRequestFailed.type,
     })
   );
+};
+
+export const filterCuisines = (postcode, cuisines) => {
+  const filteredCuisines = [];
+  for (const cuisine of cuisines) {
+    const filteredCuisine = { ...cuisine };
+    const filteredRestaurants = filteredCuisine.restaurants.filter(
+      (restaurant) => {
+        for (let deliversTo of restaurant.postcodes) {
+          if (deliversTo.includes(postcode.slice(0, 3).toUpperCase()))
+            return restaurant;
+        }
+        return null;
+      }
+    );
+    filteredCuisine.restaurants = filteredRestaurants;
+    filteredCuisines.push(filteredCuisine);
+  }
+
+  return filteredCuisines;
 };

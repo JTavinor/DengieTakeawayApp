@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  background-color: whitesmoke;
+  background-color: var(--white-color);
   height: 60px;
 
   width: 100%;

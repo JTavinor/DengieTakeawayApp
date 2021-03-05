@@ -1,6 +1,6 @@
 .formFieldError {
   box-sizing: border-box;
-  color: #ff4c4c;
+  color: var(--red-color);
   font-style: italic;
   padding: 5px;
   width: 100%;
@@ -19,5 +19,5 @@
 }
 
 .fieldRequired {
-  color: #ff4c4c;
+  color: var(--red-color);
 }
