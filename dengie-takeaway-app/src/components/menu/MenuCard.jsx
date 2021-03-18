@@ -1,15 +1,17 @@
 import React from "react";
 import SubmenuCard from "./SubmenuCard";
 
-function MenuCard({ menu }) {
+function MenuCard({ menu, restaurantName }) {
   return (
-    <ul>
-      {menu.map((subMenu) => (
-        <li key={subMenu.category}>
-          <SubmenuCard subMenu={subMenu} />
-        </li>
-      ))}
-    </ul>
+    <React.Fragment>
+      <ul>
+        {menu.map((subMenu) => (
+          <li key={subMenu.category}>
+            <SubmenuCard subMenu={subMenu} />
+          </li>
+        ))}
+      </ul>
+    </React.Fragment>
   );
 }
 

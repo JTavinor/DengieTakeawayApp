@@ -11,6 +11,7 @@ function FormField({
   errorMessage,
   label,
   name,
+  onBlur,
   onChange,
   placeholder,
   required,
@@ -27,6 +28,7 @@ function FormField({
         className={className}
         id={name}
         name={name}
+        onBlur={onBlur}
         onChange={onChange}
         placeholder={placeholder || label}
         type="text"

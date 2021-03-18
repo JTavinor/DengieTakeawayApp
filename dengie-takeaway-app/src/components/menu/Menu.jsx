@@ -10,18 +10,27 @@ import { restaurantAdded } from "../../store/order";
 import { loadMenu } from "../../store/menus";
 
 import "../../css/menu/menu.css";
+import ApiError from "../common/error";
+import RestaurantDetails from "./restaurantDetails";
 
-function Menu({ location }) {
+function Menu({ match }) {
   const dispatch = useDispatch();
 
-  const menu = useSelector((state) => state.entities.menu.list.menu);
-  const loading = useSelector((state) => state.entities.menu.loading);
-
   useEffect(() => {
-    dispatch(loadMenu(location.state.menuId));
-    dispatch(restaurantAdded({ restaurant: location.state.restaurant }));
-  }, [dispatch, location.state.menuId, location.state.restaurant]);
+    dispatch(loadMenu(match.params.name));
+    dispatch(
+      restaurantAdded({
+        restaurant: match.params.name,
+      })
+    );
+  }, [dispatch, match.params.name]);
 
+  const menu = useSelector((state) => state.entities.menu.list.menu);
+  const { restaurantAddress } = useSelector((state) => state.entities.menu);
+  const loading = useSelector((state) => state.entities.menu.loading);
+  const error = useSelector((state) => state.entities.menu.error);
+
+  console.log(restaurantAddress);
   return (
     <React.Fragment>
       {loading && <LoadingIcon />}
@@ -33,6 +42,7 @@ function Menu({ location }) {
                 <MenuLocator menu={menu} />
               </div>
               <div className="menuCardContainer">
+                <RestaurantDetails />
                 <MenuCard menu={menu} />
               </div>
 
@@ -43,6 +53,7 @@ function Menu({ location }) {
           </div>
         </React.Fragment>
       )}
+      {error && <ApiError error={error} />}
     </React.Fragment>
   );
 }

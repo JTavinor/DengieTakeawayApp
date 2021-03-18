@@ -23,6 +23,9 @@ function PostcodeChecker({ postcode, setPostcode }) {
         }}
         placeholder="Postcode"
       />
+      <p style={{ marginBottom: 0 }}>
+        Note: Restaurants only deliver to CM0, CM1, CM2, CM3
+      </p>
     </div>
   );
 }

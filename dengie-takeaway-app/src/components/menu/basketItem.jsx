@@ -30,13 +30,15 @@ function BasketItem({ item }) {
           />
         </div>
       </div>
-      <div>Price: £{price}</div>
-      <IncrementButton
-        handler={itemRemoved}
-        itemName={itemName}
-        title={<FontAwesomeIcon icon={faTrashAlt} size="xs" />}
-        styles="minus smallButton"
-      />
+      <div className="flexRow">
+        <div>Price: £{price}</div>
+        <IncrementButton
+          handler={itemRemoved}
+          itemName={itemName}
+          title={<FontAwesomeIcon icon={faTrashAlt} size="xs" />}
+          styles="minus smallButton"
+        />
+      </div>
     </li>
   );
 }

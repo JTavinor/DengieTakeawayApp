@@ -1,16 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { apiCallBegan } from "./api";
 
 const slice = createSlice({
   name: "order",
   initialState: {
-    delivery: "delivery",
     basket: [],
-    subTotal: 0,
+    delivery: "delivery",
+    error: null,
+    loading: false,
+    payment: null,
     restaurant: "",
+    restaurantAddress: null,
+    subTotal: 0,
   },
   reducers: {
     deliveryToggled: (order, action) => {
       order.delivery = action.payload.delivery;
+    },
+
+    paymentToggled: (order, action) => {
+      order.payment = action.payload.payment;
     },
 
     restaurantAdded: (order, action) => {
@@ -18,7 +27,10 @@ const slice = createSlice({
         order.restaurant = action.payload.restaurant;
         order.basket = [];
         order.subTotal = 0;
+        order.delivery = "delivery";
+        order.restaurantAddress = { ...action.payload.restaurantAddress };
       } else {
+        order.restaurantAddress = { ...action.payload.restaurantAddress };
         order.restaurant = action.payload.restaurant;
       }
     },
@@ -110,6 +122,21 @@ const slice = createSlice({
       );
       order.basket = deleted;
     },
+
+    orderPostStarted: (order, action) => {
+      order.loading = true;
+      order.error = null;
+    },
+
+    orderPostFailed: (order, action) => {
+      order.error = action.payload;
+      order.loading = false;
+    },
+
+    orderPostSuccess: (order, action) => {
+      order.loading = false;
+      order.orderId = action.payload._id;
+    },
   },
 });
 
@@ -123,6 +150,26 @@ export const {
   incrementItem,
   decrementItem,
   restaurantAdded,
+  paymentToggled,
+  orderPostSuccess,
+  orderPostStarted,
+  orderPostFailed,
+  restaurantAddressAdded,
 } = slice.actions;
 
 export default slice.reducer;
+
+export const submitOrder = (restaurantName) => (dispatch, getState) => {
+  let url = "/orders";
+
+  dispatch(
+    apiCallBegan({
+      url,
+      method: "post",
+      data: restaurantName,
+      onStart: orderPostStarted.type,
+      onSuccess: orderPostSuccess.type,
+      onError: orderPostFailed.type,
+    })
+  );
+};

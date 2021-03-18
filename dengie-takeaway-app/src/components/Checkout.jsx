@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
+
+import "../css/menu/basket.css";
 
 import "../css/form.css";
 import * as Yup from "yup";
@@ -35,7 +37,6 @@ function Checkout() {
     }),
 
     onSubmit: (values) => {
-      console.log("x");
       dispatch(customerDetailsAdded({ values }));
     },
   });
@@ -46,7 +47,7 @@ function Checkout() {
         <FormField
           autoFocus
           className={formik.errors.address1 ? "inputError" : "input"}
-          fieldError={formik.errors.address1}
+          fieldError={formik.touched.address1 && formik.errors.address1}
           errorMessage={formik.errors.address1}
           label="Address 1"
           name="address1"
@@ -57,7 +58,7 @@ function Checkout() {
         />
         <FormField
           className={formik.errors.address2 ? "inputError" : "input"}
-          fieldError={formik.errors.address2}
+          fieldError={formik.touched.address2 && formik.errors.address2}
           errorMessage={formik.errors.address2}
           label="Address 2"
           name="address2"
@@ -67,7 +68,7 @@ function Checkout() {
         />
         <FormField
           className={formik.errors.town ? "inputError" : "input"}
-          fieldError={formik.errors.town}
+          fieldError={formik.touched.town && formik.errors.town}
           errorMessage={formik.errors.town}
           label="Town/City"
           name="town"
@@ -78,7 +79,7 @@ function Checkout() {
         />
         <FormField
           className={formik.errors.postcode ? "inputError" : "input"}
-          fieldError={formik.errors.postcode}
+          fieldError={formik.touched.postcode && formik.errors.postcode}
           errorMessage={formik.errors.postcode}
           label="Postcode"
           name="postcode"
@@ -89,7 +90,7 @@ function Checkout() {
         />
         <FormField
           className={formik.errors.phone ? "inputError" : "input"}
-          fieldError={formik.errors.phone}
+          fieldError={formik.touched.phone && formik.errors.phone}
           errorMessage={formik.errors.phone}
           label="Phone Number"
           name="phone"
@@ -104,7 +105,7 @@ function Checkout() {
             type="submit"
             className="addToBasketButton"
             style={{
-              width: "80%",
+              width: "150px",
               textAlign: "center",
               padding: "10px",
               justifyContent: "center",
