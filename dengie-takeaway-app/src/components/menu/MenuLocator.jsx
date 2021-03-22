@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../css/menu/menuLocator.css";
 
 const stickyContainer = {
   position: "sticky",
@@ -7,6 +6,7 @@ const stickyContainer = {
   margin: "auto",
   paddingLeft: "10px",
   marginRight: "30px",
+  width: "100%",
 };
 
 function MenuLocator({ menu }) {
@@ -14,21 +14,12 @@ function MenuLocator({ menu }) {
 
   const renderMenu = (menu) => {
     const categoryList = menu.map((subMenu) => (
-      <li
-        className={
-          category === subMenu.category
-            ? "active categoryListItem"
-            : "categoryListItem"
-        }
-        key={subMenu.category}
-      >
+      <li key={subMenu.category}>
         <a
           href={`#${subMenu.category}`}
-          className={
-            category === subMenu.category
-              ? "active locatorButton"
-              : "locatorButton"
-          }
+          className={`locatorButton ${
+            category === subMenu.category && "active"
+          }`}
           onClick={(e) => setCategory(subMenu.category)}
         >
           {subMenu.category}

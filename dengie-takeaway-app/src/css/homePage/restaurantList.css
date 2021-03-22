@@ -1,7 +1,8 @@
 .restaurantItem {
-  border-bottom: 1px solid var(--gray-color);
+  border: 1px solid var(--gray-color);
+  border-radius: 10px;
 }
 
-[class~="restaurantItem"]:last-of-type {
+/* [class~="restaurantItem"]:last-of-type {
   border-bottom: none;
-}
+} */

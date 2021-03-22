@@ -40,7 +40,7 @@ export default slice.reducer;
 // Action creators
 const url = "/cuisines";
 export const loadCuisines = () => (dispatch, getState) => {
-  const { lastFetch } = getState().entities.cuisines;
+  const { lastFetch } = getState().cuisines;
   const diffInMinutes = moment().diff(moment(lastFetch), "minutes");
 
   if (diffInMinutes < 60) return;

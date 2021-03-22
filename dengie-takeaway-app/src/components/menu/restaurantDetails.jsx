@@ -2,27 +2,18 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { formatOpenTimes } from "../../helpers/homePage";
 import { upperFirst, lowerCase } from "lodash";
-function RestaurantDetails(props) {
-  const { restaurant } = useSelector((state) => state.entities.order);
+
+function RestaurantDetails() {
+  const { restaurant } = useSelector((state) => state.order);
   const {
     cuisine,
     openingHours,
     restaurantAddress,
     minimumDelivery,
-  } = useSelector((state) => state.entities.menu);
+  } = useSelector((state) => state.menu);
 
   return (
-    <div
-      style={{
-        width: "100%",
-        boxSizing: "border-box",
-        backgroundColor: "whitesmoke",
-        borderRadius: "10px",
-        border: "1px solid gray",
-        padding: "15px",
-        textAlign: "center",
-      }}
-    >
+    <div className="restaurantDetails">
       <h1>{upperFirst(lowerCase(restaurant.replace("-", " ")))}</h1>
       <h2>{cuisine}</h2>
       <ul>

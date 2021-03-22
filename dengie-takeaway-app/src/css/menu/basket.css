@@ -1,5 +1,5 @@
 .basketContainer {
-  background-color: var(--white-color);
+  background-color: white;
   border: 1px solid gray;
   border-radius: 5px;
   display: flex;
@@ -8,6 +8,7 @@
   padding: 15px 30px;
   text-align: center;
   width: 75%;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 30%);
 }
 
 .basketHeader {
@@ -20,6 +21,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 [class~="basketListItem"]:first-of-type {
@@ -45,4 +47,12 @@ li.basketListItem:first-child {
   text-align: center;
   padding: 10px;
   justify-content: center;
+}
+
+.basketButton {
+  display: none;
+}
+
+.basketListItem:hover .basketButton {
+  display: initial;
 }

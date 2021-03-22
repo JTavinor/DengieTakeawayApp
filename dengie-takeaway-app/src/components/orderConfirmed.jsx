@@ -4,9 +4,9 @@ import ApiError from "./common/error";
 import LoadingIcon from "./common/loadingIcon";
 
 function OrderConfirmed(props) {
-  const loading = useSelector((state) => state.entities.order.loading);
-  const orderId = useSelector((state) => state.entities.order.orderId);
-  const error = useSelector((state) => state.entities.order.error);
+  const loading = useSelector((state) => state.order.loading);
+  const orderId = useSelector((state) => state.order.orderId);
+  const error = useSelector((state) => state.order.error);
 
   return (
     <>

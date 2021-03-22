@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
-import MenuModal from "./MenuModal";
-import MenuModalOptions from "./MenuModalOptions";
-
-import "../../css/menu/itemCard.css";
+import MenuModal from "./menuModal";
+import MenuModalOptions from "./menuModalOptions";
 
 function ItemCard({ item }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -14,17 +12,17 @@ function ItemCard({ item }) {
   return (
     <>
       <button
-        className="itemCardWrapperButton"
+        className="itemCardContainer flexCol shadow"
         onClick={() => setModalIsOpen(true)}
         onMouseDown={(e) => e.preventDefault()}
       >
-        <div className="itemCardContainer">
+        <div className="itemTitlePrice flexRowCenter">
           <h2 className="itemCardElement">{itemName}</h2>
-          {itemDescription && (
-            <p className="itemCardElement">{itemDescription}</p>
-          )}
-          <p>£{itemPrice}</p>
+          <p className="itemPrice">£{itemPrice}</p>
         </div>
+        {itemDescription && (
+          <p className="itemCardElement">{itemDescription}</p>
+        )}
       </button>
 
       <Modal open={modalIsOpen} onClose={() => setModalIsOpen(false)} center>

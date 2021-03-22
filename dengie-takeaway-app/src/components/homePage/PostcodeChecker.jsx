@@ -1,16 +1,12 @@
 import React, { useState } from "react";
+import { isValidPostcode } from "../../helpers/homePage";
 import FormField from "../common/formField";
-
-function isValidPostcode(postcode) {
-  var postcodeRegEx = /^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i;
-  return postcodeRegEx.test(postcode);
-}
 
 function PostcodeChecker({ postcode, setPostcode }) {
   const [validPostcode, setValidPostcode] = useState(true);
 
   return (
-    <div className="postcodeContainer">
+    <div className="postcodeContainer flexCol borderRound shadow">
       <FormField
         className="input"
         errorMessage="Enter a valid postcode"
@@ -23,7 +19,7 @@ function PostcodeChecker({ postcode, setPostcode }) {
         }}
         placeholder="Postcode"
       />
-      <p style={{ marginBottom: 0 }}>
+      <p className="mb-0" style={{ textAlign: "center" }}>
         Note: Restaurants only deliver to CM0, CM1, CM2, CM3
       </p>
     </div>

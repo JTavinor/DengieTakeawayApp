@@ -3,8 +3,6 @@ import { useDispatch } from "react-redux";
 
 import { itemAdded } from "../../store/order";
 
-import "../../css/menu/menuModals.css";
-
 function MenuModal({ item, onClose }) {
   const { itemDescription, itemName, itemPrice } = item;
   let [quantity, setQuantity] = useState(1);
@@ -12,11 +10,11 @@ function MenuModal({ item, onClose }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="menuModalContainer">
+    <div className="menuModalContainer flexCol">
       <h1 className="menuModalInfo">{itemName}</h1>
       <p className="menuModalInfo">{itemDescription}</p>
-      <p>£{itemPrice}</p>
-      <div className="counterContainer">
+      <p className="modalPrice">£{itemPrice}</p>
+      <div className="flexRowCenter">
         <button
           disabled={quantity <= 1}
           className="counterButton minus"
@@ -33,7 +31,7 @@ function MenuModal({ item, onClose }) {
         </button>
       </div>
       <button
-        className="addToBasketButton"
+        className="addToBasketButton flexRow"
         onClick={() => {
           dispatch(
             itemAdded({

@@ -2,8 +2,6 @@ import React from "react";
 
 import CuisineCard from "./cuisineCard";
 
-import "../../css/homePage/cuisineList.css";
-
 function CuisineList({ cuisines }) {
   return (
     <ul>

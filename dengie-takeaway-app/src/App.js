@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "./components/common/navbar";
-import Menu from "./components/menu/Menu";
+import Menu from "./components/menu/menu";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import configureStore from "./store/configureStore";
@@ -11,6 +11,7 @@ import OrderDetails from "./components/OrderDetails";
 import Hompage from "./components/homePage/hompage";
 import OrderConfirmed from "./components/orderConfirmed";
 import CardPayment from "./components/cardPayment";
+import ApiError from "./components/common/error";
 
 // const store = configureStore();
 
@@ -21,23 +22,28 @@ function App() {
       <Navbar />
       <main>
         <Switch>
-          <Route path="/order-details">
+          <Route exact path="/order-details">
             <OrderDetails />
           </Route>
-          <Route path="/card-payment">
+          <Route exact path="/card-payment">
             <CardPayment />
           </Route>
-          <Route path="/order-confirmed">
+          <Route exact path="/order-confirmed">
             <OrderConfirmed />
           </Route>
-          <Route path="/checkout">
+          <Route exact path="/checkout">
             <Checkout />
           </Route>
-          <Route path="/menu/:name" render={(props) => <Menu {...props} />} />
+          <Route
+            exact
+            path="/menu/:name"
+            render={(props) => <Menu {...props} />}
+          />
 
-          <Route path="/">
+          <Route exact path="/">
             <Hompage />
           </Route>
+          <Route component={ApiError} />
         </Switch>
       </main>
       <Footer />

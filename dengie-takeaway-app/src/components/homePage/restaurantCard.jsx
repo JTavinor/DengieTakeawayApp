@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { checkRestaurantOpen, formatOpenTimes } from "../../helpers/homePage";
+import {
+  checkRestaurantOpen,
+  formatOpenTimes,
+  toUrlSlug,
+} from "../../helpers/homePage";
 
-import "../../css/homePage/restaurantCard.css";
-
-function RestaurantCard({ restaurant, openingHours, menuId }) {
+function RestaurantCard({ restaurant: restaurantName, openingHours }) {
   const [restaurantIsOpen, setRestaurantIsOpen] = useState(true);
 
   useEffect(() => {
@@ -13,26 +15,14 @@ function RestaurantCard({ restaurant, openingHours, menuId }) {
   }, [openingHours]);
 
   return (
-    <Link
-      to={{
-        pathname: restaurantIsOpen
-          ? `/menu/${restaurant.toLowerCase().split(" ").join("-")}`
-          : "/",
-        state: {
-          menuId: menuId,
-          restaurant: restaurant,
-        },
-      }}
-    >
+    <Link to={restaurantIsOpen ? `/menu/${toUrlSlug(restaurantName)}` : "/"}>
       <div
-        className={
-          restaurantIsOpen
-            ? "restaurantCard"
-            : "restaurantCard restaurantClosed"
-        }
+        className={`restaurantCard borderRound shadow ${
+          !restaurantIsOpen ? "restaurantClosed" : ""
+        }`}
       >
-        <h2>{restaurant}</h2>
-        <div className="restaurantInfo">
+        <h2>{restaurantName}</h2>
+        <div className="restaurantInfo flexRow">
           <div>
             {restaurantIsOpen ? (
               <span className="open">Open</span>
@@ -42,7 +32,7 @@ function RestaurantCard({ restaurant, openingHours, menuId }) {
           </div>
           <p>Opening Hours: {formatOpenTimes(openingHours)}</p>
         </div>
-        {!restaurantIsOpen && <div className="overlay" />}
+        {!restaurantIsOpen && <div className="overlay borderRound" />}
       </div>
     </Link>
   );

@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 
-import "../css/menu/basket.css";
-
-import "../css/form.css";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import { customerDetailsAdded } from "../store/order";
@@ -43,7 +40,7 @@ function Checkout() {
 
   return (
     <div className="cuisineContainer">
-      <form onSubmit={formik.handleSubmit} className="form">
+      <form onSubmit={formik.handleSubmit} className="form flexCol">
         <FormField
           autoFocus
           className={formik.errors.address1 ? "inputError" : "input"}

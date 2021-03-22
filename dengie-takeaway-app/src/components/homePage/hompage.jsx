@@ -12,9 +12,9 @@ function Hompage() {
   const [postcode, setPostcode] = useState("");
 
   const dispatch = useDispatch();
-  const cuisines = useSelector((state) => state.entities.cuisines.list);
-  const loading = useSelector((state) => state.entities.cuisines.loading);
-  const error = useSelector((state) => state.entities.cuisines.error);
+  const cuisines = useSelector((state) => state.cuisines.list);
+  const loading = useSelector((state) => state.cuisines.loading);
+  const error = useSelector((state) => state.cuisines.error);
 
   const filteredCuisines = filterCuisines(postcode, cuisines);
 

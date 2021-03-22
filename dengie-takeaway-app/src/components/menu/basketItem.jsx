@@ -10,8 +10,8 @@ function BasketItem({ item }) {
   const { itemName, quantity, price } = item;
 
   return (
-    <li className="basketListItem" key={itemName}>
-      <div className="flexRow">
+    <>
+      <div className="flexRowCenter">
         {quantity}x {itemName}
         <div className="counterContainer">
           <IncrementButton
@@ -19,27 +19,25 @@ function BasketItem({ item }) {
             itemName={itemName}
             price={price}
             title="-"
-            styles="minus smallButton"
+            styles="minus basketButton"
           />
           <IncrementButton
             handler={incrementItem}
             itemName={itemName}
             price={price}
             title="+"
-            styles="plus smallButton"
+            styles="plus basketButton"
+          />
+          <IncrementButton
+            handler={itemRemoved}
+            itemName={itemName}
+            title={<FontAwesomeIcon icon={faTrashAlt} size="xs" />}
+            styles="minus basketButton"
           />
         </div>
       </div>
-      <div className="flexRow">
-        <div>Price: £{price}</div>
-        <IncrementButton
-          handler={itemRemoved}
-          itemName={itemName}
-          title={<FontAwesomeIcon icon={faTrashAlt} size="xs" />}
-          styles="minus smallButton"
-        />
-      </div>
-    </li>
+      <div>Price: £{price}</div>
+    </>
   );
 }
 

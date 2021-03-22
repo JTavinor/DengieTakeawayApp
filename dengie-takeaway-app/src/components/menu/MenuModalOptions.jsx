@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import "../../css/menu/menuModals.css";
 import { itemAdded } from "../../store/order";
 
 function MenuModalOptions({ item, onClose }) {
@@ -18,10 +17,13 @@ function MenuModalOptions({ item, onClose }) {
           <button
             onClick={() => setSelectedOption(option)}
             className={
-              selectedOption === option ? "activeButton " : "optionButton"
+              selectedOption === option
+                ? "button optionPlus  "
+                : "button option"
             }
           >
-            {option} {options[option]}
+            <p style={{ margin: 0 }}>{option}</p>{" "}
+            <p style={{ margin: 0 }}> £{options[option]}</p>
           </button>
         </li>
       );
@@ -30,10 +32,10 @@ function MenuModalOptions({ item, onClose }) {
   };
 
   return (
-    <div className="menuModalContainer">
+    <div className="menuModalContainer flexCol">
       <h1 className="menuModalInfo">{itemName}</h1>
       <p className="menuModalInfo">{itemDescription}</p>
-      <h3>Choose one</h3>
+      <h3 style={{ marginTop: 0 }}>Choose one</h3>
       {renderOptions(itemOptions)}
       {selectedOption && (
         <div className="counterContainer">
@@ -54,7 +56,8 @@ function MenuModalOptions({ item, onClose }) {
         </div>
       )}
       <button
-        className="addToBasketButton"
+        className="addToBasketButton flexRow"
+        disabled={!selectedOption}
         onClick={() => {
           dispatch(
             itemAdded({

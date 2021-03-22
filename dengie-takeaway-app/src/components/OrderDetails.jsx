@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { paymentToggled, submitOrder } from "../store/order";
-import "../css/orderDetails.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Checkout from "./Checkout";
 
 function OrderDetails(props) {
   const {
@@ -14,10 +14,11 @@ function OrderDetails(props) {
     restaurant,
     subTotal,
     payment,
-  } = useSelector((state) => state.entities.order);
-  const restaurantAddress = useSelector(
-    (state) => state.entities.menu.restaurantAddress
-  );
+    restaurantAddress,
+  } = useSelector((state) => state.order);
+  // const restaurantAddress = useSelector(
+  //   (state) => state.menu.restaurantAddress
+  // );
 
   const dispatch = useDispatch();
   const [paymentNotSelected, setPaymentNotSelected] = useState(false);
@@ -79,11 +80,13 @@ function OrderDetails(props) {
               <>
                 {" "}
                 <h3>Collection From:</h3>
-                <ul>
-                  {Object.values(restaurantAddress).map((addressItem) => (
-                    <li>{addressItem}</li>
-                  ))}
-                </ul>
+                {restaurantAddress && (
+                  <ul>
+                    {Object.values(restaurantAddress).map((addressItem) => (
+                      <li>{addressItem}</li>
+                    ))}
+                  </ul>
+                )}
               </>
             )}
           </div>
@@ -118,13 +121,16 @@ function OrderDetails(props) {
             value="cash"
             defaultChecked={payment === "cash"}
           />
-          <label htmlFor="cash">Cash</label>
+          <label htmlFor="cash" style={{ marginRight: "5px" }}>
+            Cash
+          </label>
           <input
             name="paymentToggle"
             type="radio"
             id="card"
             value="card"
             defaultChecked={payment === "card"}
+            style={{ marginLeft: "5px" }}
           />
           <label htmlFor="card">Card</label>
         </div>

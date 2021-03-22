@@ -1,28 +1,24 @@
 import React from "react";
-import _ from "lodash";
 
 import { baseUrl } from "../../config/url";
 
 import RestaurantList from "./restaurantList";
 
-import "../../css/homePage/cuisineCard.css";
-
 function CuisineCard({ cuisine }) {
+  const { bannerImage: cBImage, cuisineName, restaurants } = cuisine;
   return (
     <React.Fragment>
-      <div className="cuisineCard">
-        <h1 className="title">
-          {_.startCase(_.camelCase(cuisine.cuisineName))}
-        </h1>
+      <div className="cuisineCard borderRound flexRow">
+        <h1 className="cuisineTitle">{cuisineName}</h1>
         <div
-          className="cuisineBanner cBImage"
+          className="cuisineBanner cBImage borderRound shadow"
           style={{
-            backgroundImage: `url(${baseUrl}/${cuisine.bannerImage})`,
+            backgroundImage: `url(${baseUrl}/${cBImage})`,
           }}
         />
-        <div className="cuisineBanner cBTint" />
+        <div className="cuisineBanner cBTint borderRound shadow" />
       </div>
-      <RestaurantList restaurants={cuisine.restaurants} />
+      <RestaurantList restaurants={restaurants} />
     </React.Fragment>
   );
 }

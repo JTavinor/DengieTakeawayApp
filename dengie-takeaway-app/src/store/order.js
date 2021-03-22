@@ -28,11 +28,15 @@ const slice = createSlice({
         order.basket = [];
         order.subTotal = 0;
         order.delivery = "delivery";
-        order.restaurantAddress = { ...action.payload.restaurantAddress };
+        // order.restaurantAddress = { ...action.payload.restaurantAddress };
       } else {
-        order.restaurantAddress = { ...action.payload.restaurantAddress };
+        // order.restaurantAddress = { ...action.payload.restaurantAddress };
         order.restaurant = action.payload.restaurant;
       }
+    },
+
+    restaurantAddressAdded: (order, action) => {
+      order.restaurantAddress = { ...action.payload };
     },
 
     basketAdded: (order, action) => {

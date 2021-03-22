@@ -2,8 +2,6 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
-import "../../css/formField.css";
-
 function FormField({
   autoFocus,
   className,
@@ -21,7 +19,7 @@ function FormField({
     <div className="formField">
       <label className="formLabel" htmlFor={name}>
         {label}
-        {required && <span className="fieldRequired"> *</span>}
+        {required && <span className="required"> *</span>}
       </label>
       <input
         autoFocus={autoFocus}

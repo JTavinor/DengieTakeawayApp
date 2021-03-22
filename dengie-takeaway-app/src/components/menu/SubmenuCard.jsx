@@ -1,6 +1,5 @@
 import React from "react";
-import "../../css/menu/subMenuCard.css";
-import ItemCard from "./ItemCard";
+import ItemCard from "./itemCard";
 
 function SubmenuCard({ subMenu }) {
   const { category, description, items } = subMenu;
@@ -8,7 +7,7 @@ function SubmenuCard({ subMenu }) {
     <div className="subMenuCardContainer" id={category}>
       <h1 className="subMenuCardHeader">{category}</h1>
       <p>{description}</p>
-      <ul>
+      <ul className="subMenuList">
         {items.map((item) => (
           <li key={item.itemName}>
             <ItemCard item={item} />
