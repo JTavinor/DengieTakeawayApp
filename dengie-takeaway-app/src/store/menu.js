@@ -1,18 +1,14 @@
-// DUMMY SLICE FOR CUISINES
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
 
+// Slice for storing a restaurants details and menu
 const slice = createSlice({
   name: "menu",
   initialState: {
-    list: [], // the data
+    data: [], // the data
     loading: false, // For conditionally using a loading indicator
     lastFetch: null, // for caching
     error: null,
-    cuisine: null,
-    openingHours: [],
-    restaurantAddress: {},
-    minimumDelivery: 0,
   },
 
   reducers: {
@@ -22,20 +18,15 @@ const slice = createSlice({
     },
 
     menuRequestFailed: (menu, action) => {
-      menu.list = [];
+      menu.data = [];
       menu.error = action.payload;
       menu.loading = false;
     },
 
     menuReceived: (menu, action) => {
-      menu.list = action.payload;
+      menu.data = action.payload;
       menu.loading = false;
       menu.lastFetch = Date.now();
-      menu.cuisine = action.payload.cuisine;
-      menu.openingHours = [...action.payload.openingHours];
-      menu.restaurantAddress = { ...action.payload.address };
-      menu.restaurant = action.payload.restaurant;
-      menu.minimumDelivery = action.payload.minimumDelivery;
     },
   },
 });
@@ -44,13 +35,10 @@ export const { menuReceived, menuRequested, menuRequestFailed } = slice.actions;
 
 export default slice.reducer;
 
-// Action creators
+// Starts an API GET request for a restaurants menu and populates the store with the data
 export const loadMenu = (restaurantName) => (dispatch, getState) => {
   let url = "/menus";
-  //   const { lastFetch } = getState().entities.menu;
-  //   const diffInMinutes = moment().diff(moment(lastFetch), "minutes");
   url = url + "/" + restaurantName;
-  //   if (diffInMinutes < 60) return;
   dispatch(
     apiCallBegan({
       url,

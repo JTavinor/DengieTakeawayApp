@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { filterCuisines, loadCuisines } from "../../store/cuisines";
+import { loadCuisines } from "../../store/cuisines";
+import { filterCuisines } from "../../helpers/homePage";
 
 import ApiError from "../common/error";
 import CuisineList from "./cuisineList";

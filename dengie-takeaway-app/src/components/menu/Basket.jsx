@@ -31,7 +31,7 @@ function Basket({ checkout, sticky }) {
   const { basket, deliveryOption } = useSelector((state) => state.order);
   const subTotal = useSelector((state) => _.round(state.order.subTotal, 2));
   const { minimumDelivery, restaurantAddress } = useSelector(
-    (state) => state.menu
+    (state) => state.menu.data
   );
 
   // Takes the items in the basket and renders them as a list

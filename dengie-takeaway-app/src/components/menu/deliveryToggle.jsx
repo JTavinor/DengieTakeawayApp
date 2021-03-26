@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { deliveryToggled } from "../../store/order";
+import { deliveryOptionToggled } from "../../store/order";
 
 // Sticky does not work when placed in CSS file - don't know why!
 const toggleContainer = {
@@ -13,7 +13,7 @@ const toggleContainer = {
 // Updates order accordingly
 function DeliveryToggle({ checkout, modal, sticky }) {
   const dispatch = useDispatch();
-  const deliveryOption = useSelector((state) => state.order.delivery);
+  const deliveryOption = useSelector((state) => state.order.deliveryOption);
 
   return (
     <div
@@ -21,7 +21,9 @@ function DeliveryToggle({ checkout, modal, sticky }) {
       className={
         !modal ? "deliveryToggleCont shadow" : "deliveryToggleContModal"
       }
-      onChange={(e) => dispatch(deliveryToggled({ delivery: e.target.value }))}
+      onChange={(e) =>
+        dispatch(deliveryOptionToggled({ delivery: e.target.value }))
+      }
     >
       {checkout && <h4 className="mt-0">Delivery option</h4>}
       <div className="flexRowCenter">
@@ -32,7 +34,7 @@ function DeliveryToggle({ checkout, modal, sticky }) {
             type="radio"
             id="delivery"
             value="delivery"
-            checked={deliveryOption === "delivery"}
+            defaultChecked={deliveryOption === "delivery"}
           />
           <label htmlFor="delivery">Delivery</label>
         </div>
@@ -43,7 +45,7 @@ function DeliveryToggle({ checkout, modal, sticky }) {
             type="radio"
             id="collection"
             value="collection"
-            checked={deliveryOption === "collection"}
+            defaultChecked={deliveryOption === "collection"}
           />
           <label htmlFor="collection">Collection</label>
         </div>

@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
-import entitiesReducer from "./entities";
+import cuisineReducer from "./cuisines";
+import menusReducer from "./menu";
+import orderReducer from "./order";
 
 export default combineReducers({
-  entities: entitiesReducer,
+  order: orderReducer,
+  cuisines: cuisineReducer,
+  menu: menusReducer,
 });

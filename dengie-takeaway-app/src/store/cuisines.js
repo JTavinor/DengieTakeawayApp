@@ -1,7 +1,11 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
 import moment from "moment";
-import { useSelector } from "react-redux";
+
+// A slice to deal with cuisine data
+// This is for use on the homepage
+// So we don't have to receive all the restaurants data we only receive
+// A list of restaurants and their opening times
 
 const slice = createSlice({
   name: "cuisines",
@@ -11,16 +15,21 @@ const slice = createSlice({
     lastFetch: null, // for caching
     error: null,
   },
+
+  // Actions to be dispatched on different stages of the API GET request
   reducers: {
+    // loading is used to determine whether to show the loading icon
     cuisinesRequested: (cuisines) => {
       cuisines.loading = true;
     },
 
+    // error is used to render an error message to the user
     cuisinesRequestFailed: (cuisines, action) => {
       cuisines.error = action.payload;
       cuisines.loading = false;
     },
 
+    // Populates the store with the cuisine data and sets the fetch time - to be used for caching
     cuisinesReceived: (cuisines, action) => {
       cuisines.list = action.payload;
       cuisines.loading = false;
@@ -38,6 +47,8 @@ const {
 export default slice.reducer;
 
 // Action creators
+// Dispatches a GET request for the cuisines
+// Caches the data for one hour
 const url = "/cuisines";
 export const loadCuisines = () => (dispatch, getState) => {
   const { lastFetch } = getState().cuisines;
@@ -53,24 +64,4 @@ export const loadCuisines = () => (dispatch, getState) => {
       onError: cuisinesRequestFailed.type,
     })
   );
-};
-
-export const filterCuisines = (postcode, cuisines) => {
-  const filteredCuisines = [];
-  for (const cuisine of cuisines) {
-    const filteredCuisine = { ...cuisine };
-    const filteredRestaurants = filteredCuisine.restaurants.filter(
-      (restaurant) => {
-        for (let deliversTo of restaurant.postcodes) {
-          if (deliversTo.includes(postcode.slice(0, 3).toUpperCase()))
-            return restaurant;
-        }
-        return null;
-      }
-    );
-    filteredCuisine.restaurants = filteredRestaurants;
-    filteredCuisines.push(filteredCuisine);
-  }
-
-  return filteredCuisines;
 };

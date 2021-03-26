@@ -10,10 +10,8 @@ function CheckoutButton({ customerDetails, formIsValid }) {
   const dispatch = useDispatch();
 
   const subTotal = useSelector((state) => _.round(state.order.subTotal, 2));
-  const { minimumDelivery } = useSelector((state) => state.menu);
-  const { delivery: deliveryOption, payment: paymentOption } = useSelector(
-    (state) => state.order
-  );
+  const { minimumDelivery } = useSelector((state) => state.menu.data);
+  const { deliveryOption, paymentOption, basket, restaurant, restaurantAddress  } = useSelector((state) => state.order);
 
   //   !!!IMPORTANT Customer details must be dispatched to store before posting order to DB!!!
 
@@ -35,7 +33,7 @@ function CheckoutButton({ customerDetails, formIsValid }) {
       }
       onClick={() => {
         dispatch(customerDetailsAdded({ customerDetails: customerDetails }));
-        if (paymentOption === "cash") dispatch(submitOrder({ hello: "Moto" })); // NEED TO UPDATE THIS TO SUBMIT ORDER AS REQUEST BODY
+        if (paymentOption === "cash") dispatch(submitOrder({ deliveryOption, paymentOption, basket, restaurant, restaurantAddress, subTotal, customerDetails})); // NEED TO UPDATE THIS TO SUBMIT ORDER AS REQUEST BODY
       }}
     >
       {buttonMessage(

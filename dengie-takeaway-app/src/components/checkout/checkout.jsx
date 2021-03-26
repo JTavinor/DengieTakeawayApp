@@ -15,9 +15,7 @@ import { checkoutButtonRoute } from "../../helpers/checkout";
 // Allows user to select a payment option
 // Either routes the user to card payment or submits their order depending on payment option
 function Checkout() {
-  const { delivery: deliveryOption, payment: paymentOption } = useSelector(
-    (state) => state.order
-  );
+  const { deliveryOption, paymentOption } = useSelector((state) => state.order);
 
   // Setting if the address form is valid and setting customer details form the form
   const [formIsValid, setFormIsValid] = useState(false);

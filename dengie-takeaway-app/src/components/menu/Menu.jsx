@@ -11,7 +11,7 @@ import MenuLocator from "./menuLocator";
 import Basket from "./basket";
 import LoadingIcon from "../common/loadingIcon";
 
-import { loadMenu } from "../../store/menus";
+import { loadMenu } from "../../store/menu";
 
 import ApiError from "../common/error";
 import RestaurantDetails from "./restaurantDetails";
@@ -27,7 +27,7 @@ function Menu({ match }) {
 
   const dispatch = useDispatch();
 
-  const menu = useSelector((state) => state.menu.list.menu);
+  const menu = useSelector((state) => state.menu.data.menu);
   const loading = useSelector((state) => state.menu.loading);
   const error = useSelector((state) => state.menu.error);
   const subTotal = useSelector((state) => _.round(state.order.subTotal, 2));

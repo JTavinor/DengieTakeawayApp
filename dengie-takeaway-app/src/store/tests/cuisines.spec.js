@@ -1,7 +1,7 @@
 import { loadCuisines } from "../cuisines";
 import axios from "axios";
 import Mockadapter from "axios-mock-adapter";
-import configureStore from "../configureStore";
+import configureStore from "../configureStore"
 
 describe("cuisinesSlice", () => {
   let fakeAxios;

@@ -1,8 +1,10 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import _ from "lodash";
+
 
 import FormField from "../common/formField";
 
@@ -13,6 +15,9 @@ import { submitOrder } from "../../store/order";
 // Dummy card payment form, not implemented yet due to security
 function CardPayment() {
   const dispatch = useDispatch();
+  const subTotal = useSelector((state) => _.round(state.order.subTotal, 2));
+  const { minimumDelivery } = useSelector((state) => state.menu);
+  const { deliveryOption, paymentOption, basket, restaurant, restaurantAddress, customerDetails } = useSelector((state) => state.order);
 
   // Initialising a Formik forms values and implementing Yup validation
   const formik = useFormik({
@@ -94,7 +99,7 @@ function CardPayment() {
       <Link to="/order-confirmed">
         <button
           className="addToBasketButton checkoutButton "
-          onClick={() => dispatch(submitOrder({ hello: "Moto" }))}
+          onClick={() => dispatch(submitOrder({ deliveryOption, paymentOption, basket, restaurant, restaurantAddress, subTotal, customerDetails}))}
         >
           Pay and submit order
         </button>

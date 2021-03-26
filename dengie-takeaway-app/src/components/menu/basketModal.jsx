@@ -17,7 +17,7 @@ function BasketModal() {
   const { basket, deliveryOption } = useSelector((state) => state.order);
   const subTotal = useSelector((state) => _.round(state.order.subTotal, 2));
   const { minimumDelivery, restaurantAddress } = useSelector(
-    (state) => state.menu
+    (state) => state.menu.data
   );
 
   const basketItems = () => (

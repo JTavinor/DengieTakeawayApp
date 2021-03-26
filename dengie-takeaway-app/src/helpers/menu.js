@@ -1,3 +1,4 @@
+// Formats the options list for the menu modal when an item has options
 export const renderOptions = (options, selectedOption, selectOption) => {
   var optionsList = [];
   for (const option in options) {
