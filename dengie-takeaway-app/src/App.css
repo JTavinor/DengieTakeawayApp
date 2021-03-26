@@ -34,7 +34,7 @@ a:visited {
 }
 
 .borderRound {
-  border-radius: 10px;
+  border-radius: 3px;
 }
 
 .bBGray {
@@ -47,6 +47,10 @@ a:visited {
 
 .mb-0 {
   margin-bottom: 0;
+}
+
+.mt-0 {
+  margin-top: 0;
 }
 
 .flexRow {
@@ -63,7 +67,11 @@ a:visited {
 }
 
 .shadow {
-  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 30%);
+  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+}
+
+.textCenter {
+  text-align: center;
 }
 
 /* || COMMON */
@@ -98,14 +106,14 @@ a:visited {
 .input {
   box-sizing: border-box;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 2px;
   border: 1px solid var(--gray-color);
   width: 100%;
 }
 
 .inputError {
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 2px;
   border: 1px solid var(--red-color);
   width: 100%;
   box-sizing: border-box;
@@ -212,10 +220,11 @@ a:visited {
 
 /* POSTCODE CHECKER */
 .postcodeContainer {
+  background-color: white;
   align-items: center;
   margin-bottom: 15px;
   padding: 20px 10px;
-  border: 1px solid gray;
+  border: 1px solid transparent;
 }
 
 /* | RESTAURANT CARD */
@@ -225,6 +234,7 @@ a:visited {
 }
 
 .restaurantCard {
+  background-color: white;
   align-items: center;
   box-sizing: border-box;
   display: flex;
@@ -263,19 +273,22 @@ a:visited {
 
 /* | RESTAURANT LIST */
 .restaurantItem {
-  border: 1px solid var(--gray-color);
+  border: 1px solid transparent;
   margin-top: 5px;
 }
 
 /* || MENU */
 /* | BASKET */
 .basketContainer {
-  border: 1px solid gray;
-  border-radius: 5px;
+  background-color: white;
+
+  border: 1px solid transparent;
+  border-radius: 3px;
   margin: auto;
-  padding: 15px 30px;
+  padding: 15px;
   text-align: center;
-  width: 320px;
+  margin-bottom: 20px;
+  /* width: 320px; */
 }
 
 .basketHeader {
@@ -291,9 +304,11 @@ a:visited {
   padding-bottom: 5px;
   height: 20px;
   font-size: large;
+  height: 100%;
+  align-items: center;
 }
 
-.checkoutButton {
+.goToCheckoutButton {
   background-color: orange;
   border: none;
   border-radius: 3px;
@@ -303,6 +318,16 @@ a:visited {
   font-weight: bold;
   padding: 15px 20px;
   width: 100%;
+}
+
+.goToCheckoutButton:hover {
+  background-color: rgba(255, 166, 0, 0.753);
+}
+
+.goToCheckoutButton:disabled {
+  background-color: rgba(255, 166, 0, 0.521);
+  color: rgba(0, 0, 0, 0.664);
+  cursor: not-allowed;
 }
 
 .checkoutButton:hover {
@@ -329,25 +354,42 @@ a:visited {
 }
 
 .basketButton {
-  display: none;
-}
-
-.minus:hover {
-  background-color: #ff4c4cd3;
-}
-
-.plus:hover {
-  background-color: rgba(0, 128, 0, 0.788);
-}
-
-.basketListItem:hover .basketButton {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 20px;
   margin: 0 3px;
   width: 20px;
+  background-color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
 }
+
+.minus:hover {
+  background-color: #ff4c4cd3;
+}
+
+.minusModal:hover {
+  background-color: #ff4c4c9a;
+}
+
+.plus:hover {
+  background-color: rgb(96, 240, 68);
+}
+
+.plusModal:hover {
+  background-color: rgba(97, 240, 68, 0.788);
+}
+
+/* .basketListItem:hover .basketButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  margin: 0 3px;
+  width: 20px;
+} */
 /* | BASKET ITEM */
 
 /* | DELIVERY TOGGLE */
@@ -356,8 +398,9 @@ a:visited {
 }
 
 .deliveryToggleCont {
-  border: 1px solid gray;
-  border-radius: 5px;
+  border: 1px solid transparent;
+  background-color: white;
+  border-radius: 3px;
   margin: auto;
   margin-bottom: 10px;
   padding: 20px 30px;
@@ -365,20 +408,34 @@ a:visited {
   font-size: larger;
   font-weight: 500;
   justify-content: space-evenly;
-  width: 320px;
+  /* width: 320px; */
+}
+
+.deliveryToggleContModal {
+  background-color: rgba(255, 166, 0, 0.349);
+  border-radius: 3px;
+
+  margin-bottom: 30px;
+  padding: 20px 30px;
+  text-align: center;
+  font-size: larger;
+  font-weight: 500;
+  justify-content: space-evenly;
+  width: 70%;
 }
 
 /* | ITEM CARD */
 .itemCardContainer {
   background-color: white;
-  border: 1px solid var(--gray-color);
+  border: 1px solid transparent;
   /* border-bottom: none; */
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
   margin-bottom: 5px;
   padding: 0 15px;
   padding-bottom: 15px;
   padding-top: 5px;
+  text-align: left;
   width: 100%;
 }
 
@@ -406,8 +463,19 @@ a:visited {
 }
 
 /* | MENU */
+
+.smallMenuModalContainer {
+  align-items: center;
+  text-align: center;
+  /* width: 70vw; */
+}
+
+.smallScreenBasket {
+  display: none;
+}
+
 .menuBasketContainer {
-  width: 35%;
+  width: 30%;
 }
 
 .menuCardContainer {
@@ -415,9 +483,9 @@ a:visited {
   margin: 0 50px;
 }
 
-.menuLocatorContainer {
+/* .menuLocatorContainer {
   width: 15%;
-}
+} */
 
 .menuPageContainer {
   margin: auto;
@@ -446,14 +514,14 @@ a:visited {
   width: 70%;
 }
 
-.menuLocatorContainer {
+/* .menuLocatorContainer {
   margin: auto;
   margin-right: 30px;
   padding-left: 10px;
   position: sticky;
   top: 15;
   margin: 0;
-}
+} */
 
 .menuLocatorHeader {
   margin: 0;
@@ -512,8 +580,8 @@ a:visited {
 
 .menuModalContainer {
   align-items: center;
-  width: 400px;
   text-align: center;
+  width: 400px;
 }
 
 .menuModalInfo {
@@ -521,7 +589,15 @@ a:visited {
 }
 
 .minus {
-  background-color: var(--red-color);
+  border: 2px solid #ff4c4cd3;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.minusModal {
+  background-color: #ff4c4cd3;
+  font-weight: bold;
+  margin-right: 5px;
 }
 
 .modalPrice {
@@ -530,7 +606,19 @@ a:visited {
 }
 
 .plus {
+  /* background-color: rgb(96, 240, 68); */
+  border: 2px solid rgb(96, 240, 68);
+  margin-right: 5px;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.plusModal {
   background-color: rgb(96, 240, 68);
+  /* border: 2px solid rgb(96, 240, 68); */
+  margin-right: 5px;
+  margin-left: 5px;
+  font-weight: bold;
 }
 
 .smallButton {
@@ -558,21 +646,26 @@ a:visited {
 }
 
 .option {
-  background-color: lightgray;
+  background-color: white;
   display: flex;
-  justify-content: space-around;
-  padding: 20px 0;
+  justify-content: space-between;
+  padding: 20px 20px;
+  font-weight: 540;
+  font-size: large;
 }
 
 .optionPlus {
+  border: 1px solid rgb(14, 167, 22);
   display: flex;
-  justify-content: space-around;
-  padding: 20px 0;
-  background-color: rgb(96, 240, 68);
+  justify-content: space-between;
+  padding: 20px 20px;
+  color: rgb(14, 167, 22);
+  font-weight: 540;
+  font-size: large;
 }
 
 .option:hover {
-  background-color: rgb(96, 240, 68);
+  background-color: whitesmoke;
 }
 
 .optionsList {
@@ -588,14 +681,17 @@ a:visited {
   width: 100%;
   box-sizing: border-box;
   background-color: white;
-  border-radius: 10px;
-  border: 1px solid gray;
+  border-radius: 3px;
+  border: 1px solid transparent;
   padding: 15px;
   text-align: center;
-  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 30%);
 }
 
 /* | SUBMENU CARD */
+.downChevron {
+  display: none;
+}
+
 .subMenuCardContainer {
   margin-bottom: 30px;
 }
@@ -604,11 +700,100 @@ a:visited {
   margin-bottom: 0;
 }
 
-/* | ORDER DETAILS */
+.dropDownButton {
+  background: transparent;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+  width: 100%;
+  text-align: left;
+}
+
+.dropDownButton:hover {
+  background: transparent;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+}
+
+.dropDownButton:active {
+  outline: none;
+  border: none;
+}
+
+.dropDownButton:focus {
+  outline: 0;
+}
+
+/* || CHECKOUT */
+.orderConfirmed {
+  margin: auto;
+  margin-top: 20px;
+  background-color: white;
+  width: 50%;
+  border-radius: 3px;
+  padding: 30px 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.orderConfirmedCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 280px);
+}
+
+.checkoutBasket {
+  width: 80%;
+  margin: auto;
+}
+
 .disabled-link {
   pointer-events: none;
 }
 
+.formContainer {
+  background-color: white;
+
+  margin: auto;
+  margin-top: 20px;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 30px 0;
+  box-sizing: border-box;
+}
+
+.cardPaymentContainer {
+  width: 50%;
+  padding: 30px 0 0 0;
+}
+
+.checkoutContainer {
+  margin: auto;
+  width: 40%;
+}
+
+.paymentContainer {
+  margin-top: 20px;
+}
+
+.checkoutButton {
+  width: 100%;
+  text-align: center;
+  padding: 20px 5px;
+  justify-content: center;
+  margin: 20px auto;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+/* || BREAKPOINTS */
+
+/* | HOMEPAGE */
 @media (max-width: 1000px) {
   .cuisineContainer {
     width: 80%;
@@ -631,6 +816,8 @@ a:visited {
   }
 }
 
+/* | MENU */
+
 @media (max-width: 1100px) {
   .menuLocatorContainer {
     display: none;
@@ -638,5 +825,121 @@ a:visited {
 
   .menuCardContainer {
     margin-left: 0;
+    width: 55%;
+  }
+
+  .collapsedSubMenu {
+    display: none;
+  }
+
+  .dropDownButton {
+    cursor: pointer;
+  }
+
+  .subMenuCardContainer {
+    margin-bottom: 5px;
+  }
+
+  .dropDownButtonCollapsed {
+    border-bottom: 1px solid gray;
+  }
+  .dropDownButtonCollapsed:hover {
+    border-bottom: 1px solid gray;
+  }
+
+  .restaurantDetails {
+    margin-bottom: 15px;
+  }
+
+  .menuPageContainer {
+    justify-content: space-evenly;
+  }
+
+  .downChevron {
+    display: inline-block;
+    align-self: center;
+  }
+
+  .menuBasketContainer {
+    width: 40%;
+  }
+}
+
+@media (max-width: 780px) {
+  .menuBasketContainer {
+    display: none;
+  }
+
+  .menuCardContainer {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 70px;
+  }
+
+  .smallScreenBasket {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    cursor: pointer;
+    background-color: lightgreen;
+    width: 100%;
+    height: 80px;
+    border: 1px solid transparent;
+    position: fixed;
+    bottom: 0%;
+    z-index: 50;
+  }
+  .smallScreenBasket:hover {
+    background-color: rgb(83, 240, 83);
+  }
+
+  .menuModalContainer {
+    width: auto;
+  }
+  .react-responsive-modal-modal {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .addToBasketButton {
+    width: 95%;
+  }
+
+  .react-responsive-modal-modal {
+    width: 75vw;
+  }
+
+  .deliveryToggleContModal {
+    padding: 20px 3px;
+    width: 90%;
+    margin-top: 25px;
+  }
+}
+
+/* | CHECKOUT */
+@media (max-width: 1000px) {
+  .checkoutContainer {
+    width: 60%;
+  }
+}
+@media (max-width: 680px) {
+  .checkoutContainer {
+    width: 80%;
+  }
+}
+@media (max-width: 460px) {
+  .checkoutContainer {
+    width: 90%;
+  }
+}
+@media (max-width: 920px) {
+  .orderConfirmed {
+    width: 70%;
+  }
+}
+@media (max-width: 640px) {
+  .orderConfirmed {
+    width: 97%;
   }
 }

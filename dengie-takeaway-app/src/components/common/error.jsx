@@ -1,5 +1,7 @@
 import React from "react";
 
+// !!! NOTE: Need to update backend to send the relevant status codes and add messages to this component accordingly!!!
+// Error Component to be shown when error occurs with an API Call
 function ApiError({ error }) {
   if (error === "Network Error") {
     return (

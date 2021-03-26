@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+
 import { isValidPostcode } from "../../helpers/homePage";
+
 import FormField from "../common/formField";
 
+// Allows user to check their postcode to see which restaurants deliver to them
+// Passes the postcode to the parent (Homepage) to filter the restaurants
+// Checks if the user has entered a valid postcode and renders an error message accordingly
 function PostcodeChecker({ postcode, setPostcode }) {
   const [validPostcode, setValidPostcode] = useState(true);
 

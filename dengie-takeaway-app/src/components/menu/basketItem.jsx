@@ -1,43 +1,39 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-import { decrementItem, incrementItem, itemRemoved } from "../../store/order";
+import { decrementItem, incrementItem } from "../../store/order";
 
 import IncrementButton from "./incrementButton";
 
+// Renders an item in the basket
+// Allows you to increment/decrement an item quantity
+// If quantity -> 0, removes item from basket
+// Gives you quantity, item name, and total price
 function BasketItem({ item }) {
   const { itemName, quantity, price } = item;
 
   return (
-    <>
-      <div className="flexRowCenter">
-        {quantity}x {itemName}
-        <div className="counterContainer">
-          <IncrementButton
-            handler={decrementItem}
-            itemName={itemName}
-            price={price}
-            title="-"
-            styles="minus basketButton"
-          />
-          <IncrementButton
-            handler={incrementItem}
-            itemName={itemName}
-            price={price}
-            title="+"
-            styles="plus basketButton"
-          />
-          <IncrementButton
-            handler={itemRemoved}
-            itemName={itemName}
-            title={<FontAwesomeIcon icon={faTrashAlt} size="xs" />}
-            styles="minus basketButton"
-          />
-        </div>
+    <React.Fragment>
+      <div className="flexRowCenter" style={{ textAlign: "left" }}>
+        <IncrementButton
+          handler={decrementItem}
+          itemName={itemName}
+          price={price}
+          title="-"
+          styles="minus basketButton"
+        />
+        {quantity}{" "}
+        <IncrementButton
+          handler={incrementItem}
+          itemName={itemName}
+          price={price}
+          title="+"
+          styles="plus basketButton"
+        />
+        {"   "}
+        {itemName}
       </div>
-      <div>Price: £{price}</div>
-    </>
+      <div>£{price}</div>
+    </React.Fragment>
   );
 }
 

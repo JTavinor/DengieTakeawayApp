@@ -34,6 +34,7 @@ const slice = createSlice({
       menu.cuisine = action.payload.cuisine;
       menu.openingHours = [...action.payload.openingHours];
       menu.restaurantAddress = { ...action.payload.address };
+      menu.restaurant = action.payload.restaurant;
       menu.minimumDelivery = action.payload.minimumDelivery;
     },
   },

@@ -2,11 +2,13 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
+// Generic form input field to be used in conjunction with a Formik form
+// Validated by Formik - If field is touched + invalid, error message is rendered
 function FormField({
-  autoFocus,
   className,
-  fieldError,
+  disabled,
   errorMessage,
+  fieldError,
   label,
   name,
   onBlur,
@@ -22,8 +24,9 @@ function FormField({
         {required && <span className="required"> *</span>}
       </label>
       <input
-        autoFocus={autoFocus}
+        autoFocus={false}
         className={className}
+        disabled={disabled}
         id={name}
         name={name}
         onBlur={onBlur}

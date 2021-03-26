@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+// Sticky does not work when put in CSS filee - dont' know why!
 const stickyContainer = {
   position: "sticky",
   top: 15,
@@ -9,10 +10,12 @@ const stickyContainer = {
   width: "100%",
 };
 
+// A list of sections of the menu.
+// Clicking on a section will scroll the page to that section
 function MenuLocator({ menu }) {
   const [category, setCategory] = useState("");
 
-  const renderMenu = (menu) => {
+  const renderLocatorList = (menu) => {
     const categoryList = menu.map((subMenu) => (
       <li key={subMenu.category}>
         <a
@@ -32,7 +35,7 @@ function MenuLocator({ menu }) {
   return (
     <div style={stickyContainer}>
       <h3 className="menuLocatorHeader">Categories</h3>
-      {renderMenu(menu)}
+      {renderLocatorList(menu)}
     </div>
   );
 }

@@ -14,6 +14,16 @@ const slice = createSlice({
     subTotal: 0,
   },
   reducers: {
+    resetBasket: (order, action) => {
+      order.basket = [];
+      order.delivery = "delivery";
+      order.payment = null;
+      order.customerDetails = {};
+      order.subTotal = 0;
+      order.restaurant = action.payload.restaurant;
+      order.orderId = null;
+    },
+
     deliveryToggled: (order, action) => {
       order.delivery = action.payload.delivery;
     },
@@ -24,10 +34,13 @@ const slice = createSlice({
 
     restaurantAdded: (order, action) => {
       if (order.restaurant !== action.payload.restaurant) {
-        order.restaurant = action.payload.restaurant;
         order.basket = [];
-        order.subTotal = 0;
         order.delivery = "delivery";
+        order.payment = null;
+        order.customerDetails = {};
+        order.subTotal = 0;
+        order.restaurant = action.payload.restaurant;
+        order.orderId = null;
         // order.restaurantAddress = { ...action.payload.restaurantAddress };
       } else {
         // order.restaurantAddress = { ...action.payload.restaurantAddress };
@@ -159,6 +172,7 @@ export const {
   orderPostStarted,
   orderPostFailed,
   restaurantAddressAdded,
+  resetBasket,
 } = slice.actions;
 
 export default slice.reducer;

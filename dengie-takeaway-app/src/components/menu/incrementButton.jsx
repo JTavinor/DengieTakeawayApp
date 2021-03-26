@@ -1,12 +1,23 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-function IncrementButton({ handler, title, itemName, price, styles }) {
+// Button for incrementing/decrementing the quantity of an item
+// Used in the basket and MenuModal when adding an item to the basket
+function IncrementButton({
+  disabled,
+  handler,
+  itemName,
+  price,
+  styles,
+  title,
+}) {
   const dispatch = useDispatch();
   return (
     <button
-      className={`counterButton ${styles}`}
+      className={styles}
+      disabled={disabled}
       onClick={() => dispatch(handler({ itemName, price }))}
+      onMouseDown={(e) => e.preventDefault()}
     >
       {title}
     </button>

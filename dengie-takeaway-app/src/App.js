@@ -6,12 +6,12 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import configureStore from "./store/configureStore";
 import { Provider, useSelector } from "react-redux";
 import Footer from "./components/common/footer";
-import Checkout from "./components/Checkout.jsx";
-import OrderDetails from "./components/OrderDetails";
+import OrderDetails from "./components/checkout/checkout";
 import Hompage from "./components/homePage/hompage";
-import OrderConfirmed from "./components/orderConfirmed";
-import CardPayment from "./components/cardPayment";
+import OrderConfirmed from "./components/checkout/orderConfirmed";
+import CardPayment from "./components/checkout/cardPayment";
 import ApiError from "./components/common/error";
+import Checkout from "./components/checkout/checkout";
 
 // const store = configureStore();
 
@@ -22,8 +22,8 @@ function App() {
       <Navbar />
       <main>
         <Switch>
-          <Route exact path="/order-details">
-            <OrderDetails />
+          <Route exact path="/checkout">
+            <Checkout />
           </Route>
           <Route exact path="/card-payment">
             <CardPayment />
@@ -31,9 +31,7 @@ function App() {
           <Route exact path="/order-confirmed">
             <OrderConfirmed />
           </Route>
-          <Route exact path="/checkout">
-            <Checkout />
-          </Route>
+
           <Route
             exact
             path="/menu/:name"

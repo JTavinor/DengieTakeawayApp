@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 
 import { itemAdded } from "../../store/order";
 
+// Modal that opens when clicking on an item in the menu
+// Allows you to add the item to the basket and choose the quantity
 function MenuModal({ item, onClose }) {
   const { itemDescription, itemName, itemPrice } = item;
   let [quantity, setQuantity] = useState(1);
@@ -11,20 +13,20 @@ function MenuModal({ item, onClose }) {
 
   return (
     <div className="menuModalContainer flexCol">
-      <h1 className="menuModalInfo">{itemName}</h1>
+      <h1 className="menuModalInfo mb-0">{itemName}</h1>
       <p className="menuModalInfo">{itemDescription}</p>
       <p className="modalPrice">£{itemPrice}</p>
       <div className="flexRowCenter">
         <button
           disabled={quantity <= 1}
-          className="counterButton minus"
+          className="counterButton minusModal"
           onClick={() => setQuantity((quantity -= 1))}
         >
           -
         </button>
         <div className="counter">{quantity}</div>
         <button
-          className="counterButton plus"
+          className="counterButton plusModal"
           onClick={() => setQuantity((quantity += 1))}
         >
           +
