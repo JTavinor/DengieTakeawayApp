@@ -1,11 +1,10 @@
 import { loadCuisines } from "../cuisines";
 import axios from "axios";
 import Mockadapter from "axios-mock-adapter";
-import configureStore from "../configureStore"
+import store from "../configureStore";
 
 describe("cuisinesSlice", () => {
   let fakeAxios;
-  let store;
 
   const cuisines = [
     {
@@ -16,10 +15,10 @@ describe("cuisinesSlice", () => {
 
   beforeEach(() => {
     fakeAxios = new Mockadapter(axios);
-    store = configureStore();
+    // store = configureStore();
   });
 
-  const cuisinesSlice = () => store.getState().entities.cuisines;
+  const cuisinesSlice = () => store.getState().cuisines;
 
   describe("loading cuisines", () => {
     describe("if the cuisines exist in the cache", () => {

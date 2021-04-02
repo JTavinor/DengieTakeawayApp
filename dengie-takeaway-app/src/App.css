@@ -443,9 +443,9 @@ a:visited {
   margin-bottom: 0;
 }
 
-/* [class~="subMenuList"]:last-child {
-  border-bottom: 1px solid var(--gray-color);
-} */
+[class~="menuList"]:last-child {
+  margin-bottom: 50px;
+}
 
 .itemPrice {
   font-weight: 500;
@@ -685,6 +685,7 @@ a:visited {
   border: 1px solid transparent;
   padding: 15px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 /* | SUBMENU CARD */
@@ -693,7 +694,7 @@ a:visited {
 }
 
 .subMenuCardContainer {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .subMenuCardHeader {
@@ -845,10 +846,6 @@ a:visited {
   }
   .dropDownButtonCollapsed:hover {
     border-bottom: 1px solid gray;
-  }
-
-  .restaurantDetails {
-    margin-bottom: 15px;
   }
 
   .menuPageContainer {

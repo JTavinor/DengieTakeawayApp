@@ -32,7 +32,7 @@ function BasketItem({ item }) {
         {"   "}
         {itemName}
       </div>
-      <div>£{price}</div>
+      <div>£{price.toFixed(2)}</div>
     </React.Fragment>
   );
 }

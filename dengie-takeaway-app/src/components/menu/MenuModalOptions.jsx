@@ -58,7 +58,10 @@ function MenuModalOptions({ item, onClose }) {
       >
         <div className="addToBasketButtonInfo">Add to order</div>
         <div className="addToBasketButtonInfo">
-          £{selectedOption ? itemOptions[selectedOption] * quantity : 0}
+          £
+          {selectedOption
+            ? (itemOptions[selectedOption] * quantity).toFixed(2)
+            : 0}
         </div>
       </button>
     </div>

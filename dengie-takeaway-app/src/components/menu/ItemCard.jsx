@@ -21,7 +21,7 @@ function ItemCard({ item }) {
       >
         <div className="itemTitlePrice flexRowCenter">
           <h2 className="itemCardElement">{itemName}</h2>
-          <p className="itemPrice">£{itemPrice}</p>
+          <p className="itemPrice">£{itemPrice.toFixed(2)}</p>
         </div>
         {itemDescription && (
           <p className="itemCardElement">{itemDescription}</p>

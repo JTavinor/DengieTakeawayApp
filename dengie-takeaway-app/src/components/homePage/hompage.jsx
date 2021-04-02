@@ -34,6 +34,22 @@ function Hompage() {
       {!loading && !error && (
         <React.Fragment>
           <div className="cuisineContainer">
+            {/* Small note to employers */}
+            <div
+              className="postcodeContainer flexCol borderRound shadow"
+              style={{ padding: "0 50px 15px 50px" }}
+            >
+              <h1 style={{ marginBottom: 0 }}>Note to employers:</h1>
+              <p style={{ textAlign: "center" }}>
+                Most of the restaurants do not yet have a menu in the database
+                and will return an error screen. Only "Curry Cottage" has a full
+                menu, and "The Rickshaw" has a small sample menu.
+              </p>
+              <p>
+                The website is fully optimised for all screen sizes - try
+                viewing a menu on a narrow screen!
+              </p>
+            </div>
             <PostcodeChecker setPostcode={setPostcode} postcode={postcode} />
             <CuisineList cuisines={filteredCuisines} />
           </div>

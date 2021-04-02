@@ -14,10 +14,10 @@ export const formatOpenTimes = (openingHours) => {
   let closeHour = openingHours[1];
   let closeMinute = "00";
   if (Math.floor(openingHours[0]) !== openingHours[0])
-    openMinute = (openHour - Math.floor(openingHours[0])) * 60;
+    openMinute = Math.round((openHour - Math.floor(openingHours[0])) * 60, 2);
   openHour = Math.floor(openingHours[0]);
   if (Math.floor(openingHours[1]) !== openingHours[1])
-    closeMinute = (closeHour - Math.floor(openingHours[1])) * 60;
+    closeMinute = Math.round((closeHour - Math.floor(openingHours[1])) * 60, 2);
   closeHour = Math.floor(openingHours[1]);
 
   return `${openHour}:${openMinute} - ${closeHour}:${closeMinute}`;

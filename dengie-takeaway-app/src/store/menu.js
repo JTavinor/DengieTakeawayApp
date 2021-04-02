@@ -27,6 +27,8 @@ const slice = createSlice({
       menu.data = action.payload;
       menu.loading = false;
       menu.lastFetch = Date.now();
+      // Removes the id given by mongoose as I couldn't delete on the backend!
+      delete menu.data.restaurantAddress._id;
     },
   },
 });

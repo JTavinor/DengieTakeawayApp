@@ -5,6 +5,7 @@ export const renderOptions = (options, selectedOption, selectOption) => {
     optionsList.push(
       <li className="optionsListItem" key={option}>
         <button
+          style={{ outline: "none" }}
           onClick={() => selectOption(option)}
           onMouseDown={(e) => e.preventDefault()}
           className={
@@ -17,7 +18,7 @@ export const renderOptions = (options, selectedOption, selectOption) => {
             {selectedOption === option && "• "}
             {option}
           </p>{" "}
-          <p style={{ margin: 0 }}> £{options[option]}</p>
+          <p style={{ margin: 0 }}> £{options[option].toFixed(2)}</p>
         </button>
       </li>
     );

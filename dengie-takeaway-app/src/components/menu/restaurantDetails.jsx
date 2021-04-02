@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { upperFirst, lowerCase } from "lodash";
+import { startCase, lowerCase } from "lodash";
 
 import { formatOpenTimes } from "../../helpers/homePage";
 
@@ -16,7 +16,7 @@ function RestaurantDetails() {
 
   return (
     <div className="restaurantDetails shadow">
-      <h1>{upperFirst(lowerCase(restaurant.replace("-", " ")))}</h1>
+      <h1>{startCase(lowerCase(restaurant.replace("-", " ")))}</h1>
       <h2>{cuisine}</h2>
       <ul>
         {Object.values(restaurantAddress).map((addressItem) => (

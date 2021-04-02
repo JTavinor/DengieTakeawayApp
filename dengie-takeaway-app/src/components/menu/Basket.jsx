@@ -53,7 +53,12 @@ function Basket({ checkout, sticky }) {
         style={sticky ? basketContainer : null}
         className="basketContainer flexCcheckoutBasketol shadow"
       >
-        <h2 className="basketHeader bBGray">Your Order</h2>
+        <h2
+          className="basketHeader bBGray"
+          style={checkout && { width: "80%", margin: "auto" }}
+        >
+          Your Order
+        </h2>
         <div className={checkout && "checkoutBasket"}>
           {basketItems()}
           {deliveryOption === "collection" && subTotal === 0 && (
@@ -67,7 +72,7 @@ function Basket({ checkout, sticky }) {
           )}
           <div className="subtotalContainer flexRow bBGray">
             <p className="subtotalElement">Subtotal</p>
-            <p className="subtotalElement">£{subTotal}</p>
+            <p className="subtotalElement">£{subTotal.toFixed(2)}</p>
           </div>
           {deliveryOption === "delivery" && (
             <p>Minimum Order: £{minimumDelivery}</p>
