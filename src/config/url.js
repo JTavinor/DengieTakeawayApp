@@ -1,3 +1,3 @@
-export const baseUrl = "http://localhost:4000";
+export const baseUrl = "https://jt-dengie-takeaways-api.herokuapp.com";
 
-export const apiBaseUrl = "http://localhost:4000/api";
+export const apiBaseUrl = "https://jt-dengie-takeaways-api.herokuapp.com/api";
