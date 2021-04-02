@@ -1,0 +1,942 @@
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin: 0;
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+/* UTILS */
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexColCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.borderRound {
+  border-radius: 3px;
+}
+
+.bBGray {
+  border-bottom: 1px solid var(--gray-color);
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.flexRowCenter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.shadow {
+  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+}
+
+.textCenter {
+  text-align: center;
+}
+
+/* || COMMON */
+
+/* | ERROR */
+.errorContainer {
+  height: 300px;
+  margin: auto;
+}
+
+/* | FOOTER */
+.footer {
+  border-top: 0.5px solid lightgray;
+}
+
+/* | FORM */
+.form {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* margin: auto; */
+}
+
+.error {
+  color: var(--red-color);
+  font-style: italic;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input {
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid var(--gray-color);
+  width: 100%;
+}
+
+.inputError {
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid var(--red-color);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.formElement {
+  display: inline-block;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* | FORM FIELD */
+.formFieldError {
+  color: var(--red-color);
+  font-style: italic;
+  padding: 5px;
+}
+
+.formField {
+  width: 80%;
+}
+
+.formLabel {
+  display: inline-block;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.required {
+  color: var(--red-color);
+}
+
+/* | LOADING ICON */
+.loadingIcon {
+  margin-top: 200px;
+}
+
+/* | NAVBAR */
+@import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
+
+.navbar {
+  font-family: "Yellowtail", cursive;
+  height: 80px;
+  margin-bottom: 20px;
+  font-size: 150%;
+  padding: 30px 0;
+  border-bottom: 0.5px solid lightgray;
+  box-shadow: 0px 1px 2px rgba(211, 211, 211, 0.712);
+  text-align: center;
+}
+
+.logoLink:link {
+  color: var(--red-color);
+}
+
+.logoLink:visited {
+  color: var(--red-color);
+}
+
+/* || HOMEPAGE */
+/* | CUISINE CARD */
+.cuisineBanner {
+  height: 160px;
+  opacity: 50%;
+  position: absolute;
+  width: 100%;
+}
+
+.cBImage {
+  background-size: cover;
+  z-index: -10;
+}
+
+.cBTint {
+  background-color: black;
+  z-index: -5;
+}
+
+.cuisineCard {
+  align-items: center;
+  height: 160px;
+  position: relative;
+}
+
+.cuisineTitle {
+  color: var(--white-color);
+  font-size: xxx-large;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+/* | CUISINE LIST */
+.cuisineItem {
+  margin-bottom: 20px;
+}
+
+/* | HOMEPAGE */
+.cuisineContainer {
+  margin: auto;
+  width: 60%;
+}
+
+/* POSTCODE CHECKER */
+.postcodeContainer {
+  background-color: white;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 20px 10px;
+  border: 1px solid transparent;
+}
+
+/* | RESTAURANT CARD */
+.closed {
+  color: var(--red-color);
+  margin-right: 15px;
+}
+
+.restaurantCard {
+  background-color: white;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+  position: relative;
+}
+
+.restaurantClosed {
+  cursor: initial;
+}
+
+.restaurantInfo {
+  align-items: center;
+  justify-content: flex-end;
+  width: 65%;
+}
+
+.open {
+  color: var(--green-color);
+  margin-right: 15px;
+}
+
+.overlay {
+  background-color: var(--red-color);
+  height: 100%;
+  left: 0;
+  opacity: 0.2;
+  position: absolute;
+  width: 100%;
+}
+
+.restaurantCard:hover {
+  background-color: whitesmoke;
+}
+
+/* | RESTAURANT LIST */
+.restaurantItem {
+  border: 1px solid transparent;
+  margin-top: 5px;
+}
+
+/* || MENU */
+/* | BASKET */
+.basketContainer {
+  background-color: white;
+
+  border: 1px solid transparent;
+  border-radius: 3px;
+  margin: auto;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 20px;
+  /* width: 320px; */
+}
+
+.basketHeader {
+  padding-bottom: 10px;
+  margin: 0;
+}
+
+.basketListItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  height: 20px;
+  font-size: large;
+  height: 100%;
+  align-items: center;
+}
+
+.goToCheckoutButton {
+  background-color: orange;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  font-size: large;
+  font-weight: bold;
+  padding: 15px 20px;
+  width: 100%;
+}
+
+.goToCheckoutButton:hover {
+  background-color: rgba(255, 166, 0, 0.753);
+}
+
+.goToCheckoutButton:disabled {
+  background-color: rgba(255, 166, 0, 0.521);
+  color: rgba(0, 0, 0, 0.664);
+  cursor: not-allowed;
+}
+
+.checkoutButton:hover {
+  background-color: rgba(255, 166, 0, 0.753);
+}
+
+.checkoutButton:disabled {
+  background-color: rgba(255, 166, 0, 0.521);
+  color: rgba(0, 0, 0, 0.664);
+  cursor: not-allowed;
+}
+
+[class~="basketListItem"]:first-of-type {
+  margin-top: 15px;
+}
+
+.subtotalContainer {
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.subtotalElement {
+  font-weight: bold;
+}
+
+.basketButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  margin: 0 3px;
+  width: 20px;
+  background-color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+
+.minus:hover {
+  background-color: #ff4c4cd3;
+}
+
+.minusModal:hover {
+  background-color: #ff4c4c9a;
+}
+
+.plus:hover {
+  background-color: rgb(96, 240, 68);
+}
+
+.plusModal:hover {
+  background-color: rgba(97, 240, 68, 0.788);
+}
+
+/* .basketListItem:hover .basketButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  margin: 0 3px;
+  width: 20px;
+} */
+/* | BASKET ITEM */
+
+/* | DELIVERY TOGGLE */
+.deliveryToggle {
+  margin-right: 5px;
+}
+
+.deliveryToggleCont {
+  border: 1px solid transparent;
+  background-color: white;
+  border-radius: 3px;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 20px 30px;
+  text-align: center;
+  font-size: larger;
+  font-weight: 500;
+  justify-content: space-evenly;
+  /* width: 320px; */
+}
+
+.deliveryToggleContModal {
+  background-color: rgba(255, 166, 0, 0.349);
+  border-radius: 3px;
+
+  margin-bottom: 30px;
+  padding: 20px 30px;
+  text-align: center;
+  font-size: larger;
+  font-weight: 500;
+  justify-content: space-evenly;
+  width: 70%;
+}
+
+/* | ITEM CARD */
+.itemCardContainer {
+  background-color: white;
+  border: 1px solid transparent;
+  /* border-bottom: none; */
+  border-radius: 3px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 0 15px;
+  padding-bottom: 15px;
+  padding-top: 5px;
+  text-align: left;
+  width: 100%;
+}
+
+.itemCardElement {
+  margin-bottom: 0;
+}
+
+[class~="menuList"]:last-child {
+  margin-bottom: 50px;
+}
+
+.itemPrice {
+  font-weight: 500;
+  font-size: large;
+  margin-bottom: 0;
+}
+
+.itemTitlePrice {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.itemCardContainer:hover {
+  background-color: whitesmoke;
+}
+
+/* | MENU */
+
+.smallMenuModalContainer {
+  align-items: center;
+  text-align: center;
+  /* width: 70vw; */
+}
+
+.smallScreenBasket {
+  display: none;
+}
+
+.menuBasketContainer {
+  width: 30%;
+}
+
+.menuCardContainer {
+  width: 50%;
+  margin: 0 50px;
+}
+
+/* .menuLocatorContainer {
+  width: 15%;
+} */
+
+.menuPageContainer {
+  margin: auto;
+  width: 90%;
+}
+
+/* | MENU LOCATOR */
+.locatorButton {
+  display: block;
+  padding: 8px 3px;
+  width: 80%;
+}
+
+.locatorButton.active {
+  color: white;
+  background-color: var(--blue-color);
+}
+
+.locatorButton:hover {
+  color: white;
+  background-color: var(--blue-color);
+  cursor: pointer;
+}
+
+.categoryListItem {
+  width: 70%;
+}
+
+/* .menuLocatorContainer {
+  margin: auto;
+  margin-right: 30px;
+  padding-left: 10px;
+  position: sticky;
+  top: 15;
+  margin: 0;
+} */
+
+.menuLocatorHeader {
+  margin: 0;
+  padding: 10px 0;
+}
+
+/* | MENU MODALS */
+/* GENERAL MODAL */
+
+.addToBasketButton {
+  background-color: orange;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-size: large;
+  margin-top: 20px;
+  padding: 5px 20px;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.addToBasketButtonInfo {
+  padding: 10px;
+  font-weight: bold;
+}
+
+.counter {
+  font-size: large;
+  margin: 0 10px;
+}
+
+.counterButton {
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  height: 35px;
+  font-size: large;
+  margin: 0 8px;
+  width: 35px;
+}
+
+.counterButton:disabled {
+  background-color: lightgray;
+  cursor: not-allowed;
+}
+
+.counterContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.menuModalContainer {
+  align-items: center;
+  text-align: center;
+  width: 400px;
+}
+
+.menuModalInfo {
+  margin-bottom: 50;
+}
+
+.minus {
+  border: 2px solid #ff4c4cd3;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.minusModal {
+  background-color: #ff4c4cd3;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.modalPrice {
+  font-size: larger;
+  font-weight: 500;
+}
+
+.plus {
+  /* background-color: rgb(96, 240, 68); */
+  border: 2px solid rgb(96, 240, 68);
+  margin-right: 5px;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.plusModal {
+  background-color: rgb(96, 240, 68);
+  /* border: 2px solid rgb(96, 240, 68); */
+  margin-right: 5px;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.smallButton {
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  margin: 0 3px;
+  width: 20px;
+}
+
+/* MODAL WITH OPTIONS */
+.addToBasketButton:disabled {
+  background-color: lightgray;
+  cursor: not-allowed;
+}
+
+.button {
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  font-size: large;
+  padding: 10px 0;
+  width: 200px;
+}
+
+.option {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+  font-weight: 540;
+  font-size: large;
+}
+
+.optionPlus {
+  border: 1px solid rgb(14, 167, 22);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+  color: rgb(14, 167, 22);
+  font-weight: 540;
+  font-size: large;
+}
+
+.option:hover {
+  background-color: whitesmoke;
+}
+
+.optionsList {
+  margin-bottom: 15px;
+}
+
+.optionsListItem {
+  margin-bottom: 5px;
+}
+
+/* | RESTAURANT DETAILS */
+.restaurantDetails {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* | SUBMENU CARD */
+.downChevron {
+  display: none;
+}
+
+.subMenuCardContainer {
+  margin-bottom: 10px;
+}
+
+.subMenuCardHeader {
+  margin-bottom: 0;
+}
+
+.dropDownButton {
+  background: transparent;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+  width: 100%;
+  text-align: left;
+}
+
+.dropDownButton:hover {
+  background: transparent;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+}
+
+.dropDownButton:active {
+  outline: none;
+  border: none;
+}
+
+.dropDownButton:focus {
+  outline: 0;
+}
+
+/* || CHECKOUT */
+.orderConfirmed {
+  margin: auto;
+  margin-top: 20px;
+  background-color: white;
+  width: 50%;
+  border-radius: 3px;
+  padding: 30px 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.orderConfirmedCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 280px);
+}
+
+.checkoutBasket {
+  width: 80%;
+  margin: auto;
+}
+
+.disabled-link {
+  pointer-events: none;
+}
+
+.formContainer {
+  background-color: white;
+
+  margin: auto;
+  margin-top: 20px;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 30px 0;
+  box-sizing: border-box;
+}
+
+.cardPaymentContainer {
+  width: 50%;
+  padding: 30px 0 0 0;
+}
+
+.checkoutContainer {
+  margin: auto;
+  width: 40%;
+}
+
+.paymentContainer {
+  margin-top: 20px;
+}
+
+.checkoutButton {
+  width: 100%;
+  text-align: center;
+  padding: 20px 5px;
+  justify-content: center;
+  margin: 20px auto;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+/* || BREAKPOINTS */
+
+/* | HOMEPAGE */
+@media (max-width: 1000px) {
+  .cuisineContainer {
+    width: 80%;
+  }
+}
+@media (max-width: 700px) {
+  .cuisineContainer {
+    width: 95%;
+  }
+}
+
+@media (max-width: 550px) {
+  .restaurantCard {
+    flex-direction: column;
+    padding: 0;
+  }
+  .restaurantInfo {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* | MENU */
+
+@media (max-width: 1100px) {
+  .menuLocatorContainer {
+    display: none;
+  }
+
+  .menuCardContainer {
+    margin-left: 0;
+    width: 55%;
+  }
+
+  .collapsedSubMenu {
+    display: none;
+  }
+
+  .dropDownButton {
+    cursor: pointer;
+  }
+
+  .subMenuCardContainer {
+    margin-bottom: 5px;
+  }
+
+  .dropDownButtonCollapsed {
+    border-bottom: 1px solid gray;
+  }
+  .dropDownButtonCollapsed:hover {
+    border-bottom: 1px solid gray;
+  }
+
+  .menuPageContainer {
+    justify-content: space-evenly;
+  }
+
+  .downChevron {
+    display: inline-block;
+    align-self: center;
+  }
+
+  .menuBasketContainer {
+    width: 40%;
+  }
+}
+
+@media (max-width: 780px) {
+  .menuBasketContainer {
+    display: none;
+  }
+
+  .menuCardContainer {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 70px;
+  }
+
+  .smallScreenBasket {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    cursor: pointer;
+    background-color: lightgreen;
+    width: 100%;
+    height: 80px;
+    border: 1px solid transparent;
+    position: fixed;
+    bottom: 0%;
+    z-index: 50;
+  }
+  .smallScreenBasket:hover {
+    background-color: rgb(83, 240, 83);
+  }
+
+  .menuModalContainer {
+    width: auto;
+  }
+  .react-responsive-modal-modal {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .addToBasketButton {
+    width: 95%;
+  }
+
+  .react-responsive-modal-modal {
+    width: 75vw;
+  }
+
+  .deliveryToggleContModal {
+    padding: 20px 3px;
+    width: 90%;
+    margin-top: 25px;
+  }
+}
+
+/* | CHECKOUT */
+@media (max-width: 1000px) {
+  .checkoutContainer {
+    width: 60%;
+  }
+}
+@media (max-width: 680px) {
+  .checkoutContainer {
+    width: 80%;
+  }
+}
+@media (max-width: 460px) {
+  .checkoutContainer {
+    width: 90%;
+  }
+}
+@media (max-width: 920px) {
+  .orderConfirmed {
+    width: 70%;
+  }
+}
+@media (max-width: 640px) {
+  .orderConfirmed {
+    width: 97%;
+  }
+}
