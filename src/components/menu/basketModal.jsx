@@ -52,7 +52,7 @@ function BasketModal() {
             (deliveryOption === "delivery" &&
               subTotal >= minimumDelivery &&
               "/checkout") ||
-            (deliveryOption === "collection" && "/order-details")
+            (deliveryOption === "collection" && "/checkout")
           }
         >
           <button
