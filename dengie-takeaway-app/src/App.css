@@ -179,9 +179,9 @@ a:visited {
 /* | CUISINE CARD */
 .cuisineBanner {
   height: 160px;
-  opacity: 50%;
   position: absolute;
   width: 100%;
+  opacity: 50%;
 }
 
 .cBImage {

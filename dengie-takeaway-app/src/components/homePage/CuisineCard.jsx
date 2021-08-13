@@ -15,10 +15,14 @@ function CuisineCard({ cuisine }) {
         <div
           className="cuisineBanner cBImage borderRound shadow"
           style={{
-            backgroundImage: `url(${baseUrl}/${cBImage})`,
+            backgroundImage: `url('${baseUrl}/${cBImage}')`,
+            opacity: "50%",
           }}
         />
-        <div className="cuisineBanner cBTint borderRound shadow" />
+        <div
+          className="cuisineBanner cBTint borderRound shadow"
+          style={{ opacity: "50%" }}
+        />
       </div>
       <RestaurantList restaurants={restaurants} />
     </React.Fragment>
